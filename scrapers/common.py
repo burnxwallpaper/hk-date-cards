@@ -49,7 +49,7 @@ OPTIONAL = {"要早訂", "親子向", "大型公演"}
 ALL_ALLOWED = TYPE | OCCASION | MOOD | BUDGET_TAGS | OPTIONAL
 
 # Types that default to 免費 unless source explicitly says paid
-FORCE_FREE_TYPES = {"商場漫遊", "長廳", "開放日", "市集"}
+FORCE_FREE_TYPES = {"商場漫遊", "長廳", "開放日", "市集", "室內打卡"}
 
 _last_fetch_at = 0.0
 
@@ -143,9 +143,10 @@ def parse_budget_from_text(text: str) -> tuple[str, str | None]:
         return "未知", None
     # Strong free signals only — ignore "免費特飲/免費燈籠" promo asides in long blurbs.
     if re.search(
-        r"免費入場|免費參加|免費參觀|免費開放|免費體檢|免費文化|"
-        r"Free Admission|free admission|費用：?\s*免費|收費：?\s*免費|"
-        r"^免費$|(?:^|[【\s])免費(?:活動|節目|音樂會|演奏會|市集|展覽)",
+        r"免費入場|免費參加|免費參觀|免費開放|免費體檢|免費文化|免費導賞|"
+        r"免費對外|費用全免|無需門票|免票|公開展出|常設展覽免費|"
+        r"Free Admission|free admission|admission\s*free|費用：?\s*免費|收費：?\s*免費|"
+        r"^免費$|(?:^|[【\s])免費(?:活動|節目|音樂會|演奏會|市集|展覽|參觀)",
         t,
         re.I,
     ):
@@ -193,10 +194,21 @@ def force_free_for_type(
     budget_text: str = "",
 ) -> tuple[str, str | None]:
     """
-    Force 免費 for 商場漫遊／長廳／開放日／市集 (and 逛街-like → 商場漫遊)
+    Force 免費 for 商場漫遊／長廳／開放日／市集／室內打卡
     unless source text already states a paid amount.
+    Also force 免費 for 美術館／展覽 when text clearly says permanent/free admission
+    (never invent free for ticketed concerts or special paid shows).
     """
-    if event_type not in FORCE_FREE_TYPES:
+    t = clean_text(budget_text)
+    free_art = event_type in {"美術館", "展覽"} and bool(
+        re.search(
+            r"常設展覽免費|常設.*免費|免費參觀|免費入場|免費開放|公開展出|"
+            r"Free Admission|free admission|admission\s*free",
+            t,
+            re.I,
+        )
+    )
+    if event_type not in FORCE_FREE_TYPES and not free_art:
         return budget_display, budget_tag
     if budget_tag and budget_tag != "免費" and budget_tag in BUDGET_TAGS:
         return budget_display, budget_tag
@@ -205,47 +217,216 @@ def force_free_for_type(
     return "免費", "免費"
 
 
+# Mall / soft-venue names → 商場漫遊 / 室內打卡 (not occasion-only)
+MALL_VENUES = (
+    "海港城",
+    "Harbour City",
+    "時代廣場",
+    "朗豪坊",
+    "國際金融中心",
+    "IFC Mall",
+    "ifc",
+    "apm",
+    "MegaBox",
+    "置富",
+    "領展",
+    "尖沙咀中心",
+    "帝國中心",
+    "The Twins",
+    "雙子匯",
+    "圓方",
+    "Elements",
+    "K11",
+    "希慎",
+    "利園",
+    "SOGO",
+    "崇光",
+    "荷里活廣場",
+    "新城市廣場",
+    "屯門市廣場",
+    "YOHO",
+    "荃灣廣場",
+    "太古城中心",
+    "又一城",
+    "Festival Walk",
+    "PMQ",
+    "元創方",
+)
+
+# Food / buffet / ticketed sports — NOT couple outdoor-walk types
+_FOOD_NOT_OUTDOOR = (
+    "放題",
+    "自助餐",
+    "海鮮燒烤",
+    "燒烤放題",
+    "BBQ",
+    "buffet",
+    "Buffet",
+    "美酒佳餚",
+    "餐酒",
+    "品酒",
+)
+_RACE_SPORT_NOT_WALK = (
+    "帆船",
+    "錦標賽",
+    "世界錦標",
+    "馬拉松",
+    "賽馬",
+    "龍舟賽",
+    "公開賽",  # golf etc. — spectator sport, not 戶外走走 date walk
+)
+_PERF_KW = (
+    "演唱會",
+    "音樂會",
+    "演奏會",
+    "公演",
+    "音樂劇",
+    "歌劇",
+    "舞台劇",
+    "匯演",
+    "standup",
+    "Stand-up",
+    "Standup",
+)
+
+
+def _is_food_not_walk(blob: str) -> bool:
+    return any(k in blob for k in _FOOD_NOT_OUTDOOR)
+
+
+def _is_race_sport(blob: str) -> bool:
+    return any(k in blob for k in _RACE_SPORT_NOT_WALK)
+
+
+def _is_performance(blob: str, *, title: str = "") -> bool:
+    """Strong concert/show signals. Weak words (表演/舞台) only count in the title
+    so festival blurbs mentioning '街頭表演' do not become 表演 over 市集/展覽."""
+    check = title or blob
+    if any(k in check for k in _PERF_KW):
+        return True
+    # Title-level weak signals only
+    if title and any(k in title for k in ("表演", "劇場", "舞台劇", "舞蹈匯演", "舞劇")):
+        return True
+    return False
+
+
+def _has_museum_signal(blob: str) -> bool:
+    """True museum/gallery venue — ignore street names like 博物館道."""
+    # Strip street-name false positives before matching
+    scrubbed = re.sub(r"博物館道\d*", " ", blob)
+    scrubbed = re.sub(r"美術館道\d*", " ", scrubbed)
+    return any(
+        k in scrubbed
+        for k in (
+            "美術館",
+            "藝術館",
+            "博物館",
+            "文物館",
+            "紀念館",
+            "藝廊",
+            "畫廊",
+            "Museum of Art",
+            "M+",
+            "故宮",
+        )
+    )
+
+
+def _has_mall_signal(blob: str) -> bool:
+    if any(k in blob for k in ("商場", "mall", "Mall", "快閃店", "pop-up", "Pop-up", "POP UP", "逛街", "中庭打卡")):
+        return True
+    if any(k in blob for k in MALL_VENUES):
+        return True
+    return False
+
+
 def infer_type(title: str, location: str = "", extra_text: str = "") -> str | None:
-    """Pick exactly ONE type tag (prefer TYPE_PRIORITY #1 match order)."""
+    """Pick exactly ONE type tag (prefer TYPE_PRIORITY #1 match order).
+
+    Overrides:
+    - Concerts / 音樂會 → 表演 (never 美術館 via 博物館道 etc.)
+    - Food buffet / sailing race / ticketed sports → no 戶外走走 (None or better type)
+    - Mall collabs / soft venues → 商場漫遊 or 室內打卡
+    """
     blob = f"{title} {location} {extra_text}"
     candidates: list[str] = []
 
-    if any(k in blob for k in ("美術館", "藝術館", "博物館", "文物館", "紀念館", "藝廊", "畫廊", "Museum of Art", "M+")):
+    # 1) Performance beats museum/street-name false positives
+    # Wine & dine with "現場表演" is still a food festival — don't force 表演
+    # Use title for performance check so desc "街頭表演" does not override 市集
+    if _is_performance(blob, title=title) and not _is_food_not_walk(blob):
+        candidates.append("表演")
+
+    # Food buffet / race: never 戶外走走; leave no wrong type unless another type fits
+    food_block = _is_food_not_walk(blob)
+    race_block = _is_race_sport(blob) and not any(
+        k in blob for k in ("展覽", "市集", "開放日", "音樂會", "演唱會")
+    )
+
+    if _has_museum_signal(blob) and "表演" not in candidates:
         candidates.append("美術館")
-    if any(k in blob for k in ("展覽", "展覧", "特展", "常設展", "exhibition", "Exhibition")):
+    if any(k in blob for k in ("展覽", "展覧", "特展", "常設展", "exhibition", "Exhibition", "紀念展")):
         candidates.append("展覽")
-    if any(k in blob for k in ("商場", "mall", "Mall", "快閃店", "pop-up", "Pop-up", "POP UP", "逛街", "中庭打卡")):
+    if _has_mall_signal(blob):
         candidates.append("商場漫遊")
-    if any(k in blob for k in ("市集", "墟", "bazaar", "market", "嘉年華市集", "農墟")):
+    if any(k in blob for k in ("市集", "墟", "bazaar", "market", "嘉年華市集", "農墟", "廟會")):
         candidates.append("市集")
     if any(k in blob for k in ("開放日", "Open Day", "open day", "開放參觀", "開放予公眾")):
         candidates.append("開放日")
-    if any(k in blob for k in ("夜景", "夜遊", "燈光展", "燈飾", "亮燈", "煙花", "維港夜", "倒數", "跨年", "舞火龍", "綵燈", "花燈", "冬日巡禮", "繽紛冬日")):
-        candidates.append("夜景散步")
-    if any(k in blob for k in ("打卡", "影相位", "必影", "裝置藝術", "室內装置", "室內打卡")):
-        candidates.append("室內打卡")
-    if any(k in blob for k in ("長廳", "大堂", "Foyer", "foyer", "免費文化節目", "大堂音樂會")):
-        candidates.append("長廳")
     if any(
         k in blob
         for k in (
-            "演唱會",
-            "音樂會",
-            "演奏會",
-            "公演",
-            "表演",
-            "劇場",
-            "舞台",
-            "舞蹈",
-            "歌劇",
-            "音樂劇",
-            "standup",
-            "Stand-up",
+            "夜景",
+            "夜遊",
+            "燈光展",
+            "燈飾",
+            "亮燈",
+            "煙花",
+            "維港夜",
+            "倒數",
+            "跨年",
+            "舞火龍",
+            "綵燈",
+            "花燈",
+            "冬日巡禮",
+            "繽紛冬日",
         )
     ):
-        candidates.append("表演")
-    if any(k in blob for k in ("行山", "海濱", "散步", "戶外走走", "公園散步", "綠道", "步道", "郊遊", "巡禮", "廟會", "燒烤", "嘉年華")):
-        candidates.append("戶外走走")
+        candidates.append("夜景散步")
+    # Soft mall collabs / photo spots without explicit 商場 keyword
+    if any(k in blob for k in ("打卡", "影相位", "必影", "裝置藝術", "室內装置", "室內打卡", "藝術裝置")):
+        candidates.append("室內打卡")
+    elif _has_mall_signal(blob) and any(k in title for k in ("×", "x ", " x", "Ｘ", "快閃", "聯乘", "期間限定")):
+        candidates.append("室內打卡")
+    if any(k in blob for k in ("長廳", "大堂", "Foyer", "foyer", "免費文化節目", "大堂音樂會")):
+        candidates.append("長廳")
+
+    # Outdoor walk — exclude food buffets & spectator sports/races
+    if not food_block and not race_block and "表演" not in candidates:
+        if any(
+            k in blob
+            for k in (
+                "行山",
+                "海濱長廊",
+                "散步",
+                "戶外走走",
+                "公園散步",
+                "綠道",
+                "步道",
+                "郊遊",
+            )
+        ):
+            candidates.append("戶外走走")
+        # Bare 海濱 / 嘉年華 only if not already typed as mall/market/show
+        elif "海濱" in blob and not any(
+            c in candidates for c in ("市集", "商場漫遊", "夜景散步", "展覽", "表演")
+        ):
+            candidates.append("戶外走走")
+
+    # Soft mall venues: prefer 商場漫遊 over museum-category text in extra_text
+    if _has_mall_signal(f"{title} {location}") and "商場漫遊" in candidates:
+        if "美術館" in candidates and not _has_museum_signal(f"{title} {location}"):
+            candidates = [c for c in candidates if c != "美術館"]
 
     for t in TYPE_PRIORITY:
         if t in candidates:
