@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>香港約會卡片 — 週末去邊</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>香港約會卡片</h1>
+      <p class="sub">公開活動精簡卡 · 個人用 · 無廣告無推播</p>
+    </div>
+    <div class="meta" id="meta">載入中…</div>
+  </header>
+
+  <section class="filters" aria-label="篩選">
+    <div class="row">
+      <label>場合
+        <select id="f-occasion">
+          <option value="">全部</option>
+          <option value="週末" selected>週末</option>
+          <option value="室內">室內</option>
+          <option value="戶外">戶外</option>
+          <option value="半日">半日</option>
+          <option value="夜晚">夜晚</option>
+        </select>
+      </label>
+      <label>氣氛
+        <select id="f-mood">
+          <option value="">全部</option>
+          <option value="安靜">安靜</option>
+          <option value="熱鬧">熱鬧</option>
+          <option value="行路多">行路多</option>
+          <option value="坐低傾">坐低傾</option>
+        </select>
+      </label>
+      <label>預算上限
+        <select id="f-budget">
+          <option value="">不限</option>
+          <option value="免費">只看免費</option>
+          <option value="$100內" selected>$100內（含免費）</option>
+          <option value="$100–300">$100–300</option>
+          <option value="$300–600">$300–600</option>
+          <option value="$600+">$600+</option>
+        </select>
+      </label>
+      <label class="chk"><input type="checkbox" id="f-exclude-family" checked /> 排除親子向</label>
+      <label>地點含
+        <input type="search" id="f-location" placeholder="例如 尖沙咀 / 西九" />
+      </label>
+      <label>關鍵字
+        <input type="search" id="f-q" placeholder="節目名" />
+      </label>
+      <button type="button" id="btn-reset" class="ghost">重設預設</button>
+    </div>
+    <p class="hint">預設：週末 + 預算$100內 + 排除親子向。卡片最多顯示兩個標籤；預算未知唔會亂估。</p>
+  </section>
+
+  <section class="stats"><span id="count">0</span> 項</section>
+  <main id="grid" class="grid"></main>
+  <footer class="foot">
+    <p>資料來自公開網頁，每週自行 <code>python refresh.py</code> 更新。來源連結僅供核對。</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

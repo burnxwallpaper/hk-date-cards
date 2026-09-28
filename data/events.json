@@ -1,0 +1,572 @@
+{
+  "updated_at": "2026-09-26T22:33:38+0800",
+  "timezone": "Asia/Hong_Kong",
+  "tag_taxonomy": {
+    "occasion": [
+      "室內",
+      "戶外",
+      "半日",
+      "夜晚",
+      "週末"
+    ],
+    "mood": [
+      "安靜",
+      "熱鬧",
+      "行路多",
+      "坐低傾"
+    ],
+    "budget": [
+      "免費",
+      "$100內",
+      "$100–300",
+      "$300–600",
+      "$600+"
+    ],
+    "optional": [
+      "要早訂",
+      "親子向",
+      "大型公演"
+    ],
+    "rules": [
+      "卡片最多顯示 1–2 個 tags",
+      "預算未知時顯示「預算未知」，不發明 budget tag",
+      "地區寫在地點欄，不當 tag"
+    ]
+  },
+  "events": [
+    {
+      "id": "b1641917e0f8",
+      "title": "週末拉闊音樂會",
+      "title_full": "青年舞台@HKCC 2026/27 — 週末拉闊音樂會",
+      "location": "香港文化中心大堂",
+      "budget": "免費",
+      "budget_tag": "免費",
+      "tags": [
+        "室內",
+        "半日",
+        "週末",
+        "熱鬧",
+        "坐低傾",
+        "免費"
+      ],
+      "display_tags": [
+        "熱鬧",
+        "坐低傾"
+      ],
+      "date_text": "5.9.2026 (六) 3pm – 4:30pm",
+      "start_date": "2026-09-05",
+      "end_date": null,
+      "source": "康文署／香港文化中心",
+      "source_url": "https://www.lcsd.gov.hk/tc/hkcc/programmes/audbuilding/freeculturalprogrammes.html"
+    },
+    {
+      "id": "c272ba922475",
+      "title": "週末拉闊音樂會",
+      "title_full": "青年舞台@HKCC 2026/27 — 週末拉闊音樂會",
+      "location": "香港文化中心大堂",
+      "budget": "免費",
+      "budget_tag": "免費",
+      "tags": [
+        "室內",
+        "半日",
+        "週末",
+        "熱鬧",
+        "坐低傾",
+        "免費"
+      ],
+      "display_tags": [
+        "熱鬧",
+        "坐低傾"
+      ],
+      "date_text": "17.10.2026 (六) 3pm – 4:30pm",
+      "start_date": "2026-10-17",
+      "end_date": null,
+      "source": "康文署／香港文化中心",
+      "source_url": "https://www.lcsd.gov.hk/tc/hkcc/programmes/audbuilding/freeculturalprogrammes.html"
+    },
+    {
+      "id": "5f835f2743e2",
+      "title": "繁星燒烤 – 海鮮燒烤放題",
+      "title_full": "繁星燒烤 – 海鮮燒烤放題",
+      "location": "屯門大欖涌村385號",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "夜晚",
+        "週末"
+      ],
+      "display_tags": [
+        "週末",
+        "夜晚"
+      ],
+      "date_text": "9月19日起(每逢週末及假期夜間時段)",
+      "start_date": "2026-09-19",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "15ad19c7ef15",
+      "title": "大坑舞火龍 2026",
+      "title_full": "大坑舞火龍 2026",
+      "location": "大坑 浣紗街",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "戶外",
+        "夜晚",
+        "週末",
+        "熱鬧",
+        "行路多"
+      ],
+      "display_tags": [
+        "熱鬧",
+        "行路多"
+      ],
+      "date_text": "2026年9月24日 7:30 PM – 10:00 PM 星期四 (1 天) 2026年9月26日 7:30 PM – 10:00 PM 星期六 (1 天) 2026年9月25日 7:30 PM – 11:30 PM 星期五 (1 天)",
+      "start_date": "2026-09-24",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "d237192cd50d",
+      "title": "Five Suns 潮流快閃店",
+      "title_full": "Five Suns 潮流快閃店",
+      "location": "灣仔日街 5 號(5 Sun Street)",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "戶外",
+        "週末",
+        "熱鬧",
+        "行路多"
+      ],
+      "display_tags": [
+        "熱鬧",
+        "行路多"
+      ],
+      "date_text": "9月6日:Stanley 1913 x 59 Tattoo 開幕派對 9月13日:16強街舞Battle 炸爆日街 9月20日:跑步聽歌兼歎精品咖啡雪糕 9月27日:本地新晉獨立R&B音樂展演",
+      "start_date": "2026-09-06",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "1a8b889a9028",
+      "title": "女青中秋市集",
+      "title_full": "女青中秋市集",
+      "location": "香港維多利亞公園 銅鑼灣興發街1號",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "戶外",
+        "夜晚",
+        "熱鬧",
+        "行路多"
+      ],
+      "display_tags": [
+        "熱鬧",
+        "行路多"
+      ],
+      "date_text": "2026年9月19至22日 6:30 PM – 11:00 PM 每日 (4 天)",
+      "start_date": null,
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "1507ed9eb5a2",
+      "title": "Marshall x Common Interest Pop-up Store",
+      "title_full": "Marshall x Common Interest Pop-up Store",
+      "location": "西營盤忠正街 2–4 號 Shop A(Common Interest / BinCoop)",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "戶外",
+        "夜晚",
+        "週末",
+        "行路多"
+      ],
+      "display_tags": [
+        "行路多",
+        "週末"
+      ],
+      "date_text": "2026年9月10日至10月22日,下午 1:00 至 晚上 7:00(星期二至星期日,逢星期一休息)",
+      "start_date": "2026-09-10",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "a151e45e128d",
+      "title": "SOHO MARKET 中秋賞燈市集",
+      "title_full": "「SOHO MARKET 中秋賞燈市集」@YM2裕民坊",
+      "location": "裕民坊 YM2 1-F 中庭 九龍觀塘協和街33號",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "戶外",
+        "夜晚",
+        "熱鬧",
+        "行路多"
+      ],
+      "display_tags": [
+        "熱鬧",
+        "行路多"
+      ],
+      "date_text": "2026年9月26至27日 12:00 PM – 8:00 PM 每日 (2 天)",
+      "start_date": null,
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "3be911f23469",
+      "title": "SSwagger O Day 2026 GenZ嘉年華",
+      "title_full": "SSwagger O Day 2026 GenZ嘉年華",
+      "location": "啟德體育園 (東營) 香港九龍啟德承啟道38號",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "戶外",
+        "夜晚",
+        "熱鬧"
+      ],
+      "display_tags": [
+        "熱鬧",
+        "夜晚"
+      ],
+      "date_text": "2026年9月19至20日 12:00 PM – 10:00 PM 每日 (2 天)",
+      "start_date": null,
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "ec2ad37800ad",
+      "title": "免費寵物體檢 VetCare4All Weekend",
+      "title_full": "免費寵物體檢 VetCare4All Weekend",
+      "location": "香港青年協會領袖學院 新界粉嶺馬會道302號",
+      "budget": "免費",
+      "budget_tag": "免費",
+      "tags": [
+        "週末",
+        "親子向",
+        "免費"
+      ],
+      "display_tags": [
+        "週末",
+        "親子向"
+      ],
+      "date_text": "2026年9月5至6日 10:00 AM – 6:00 PM 每日 (2 天)",
+      "start_date": null,
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "fbd8ab48cebb",
+      "title": "豚圓月夜",
+      "title_full": "「豚圓月夜」中秋市集 @黃金海岸商場",
+      "location": "黃金海岸商場 中庭 香港青山公路1號 黃金海岸商場地下戶外場地",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "戶外",
+        "夜晚",
+        "熱鬧",
+        "行路多"
+      ],
+      "display_tags": [
+        "熱鬧",
+        "行路多"
+      ],
+      "date_text": "2026年9月25至27日 12:00 PM – 8:00 PM 每日 (3 天)",
+      "start_date": null,
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "df639006f7f9",
+      "title": "「零用錢大作戰」白紙市集",
+      "title_full": "「零用錢大作戰」白紙市集",
+      "location": "朗豪坊 L9-L12 長廊 旺角朗豪坊",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "戶外",
+        "夜晚",
+        "週末",
+        "熱鬧",
+        "行路多"
+      ],
+      "display_tags": [
+        "熱鬧",
+        "行路多"
+      ],
+      "date_text": "2026年9月5至27日 12:00 PM – 9:00 PM 逢星期六至日 (8 天)",
+      "start_date": null,
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "47260164ec76",
+      "title": "Creator Chella 市集 @灣仔海濱",
+      "title_full": "Creator Chella 市集 @灣仔海濱",
+      "location": "灣仔海濱活動空間 香港灣仔鴻興道",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "戶外",
+        "週末",
+        "熱鬧",
+        "行路多"
+      ],
+      "display_tags": [
+        "熱鬧",
+        "行路多"
+      ],
+      "date_text": "2026年9月5日 10:00 AM – 6:00 PM 星期六 (1 天)",
+      "start_date": "2026-09-05",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "bbc0a65ac4ea",
+      "title": "野外生態攝影年展",
+      "title_full": "「野外生態攝影年展」香港科學館專題展覽",
+      "location": "特備展覽廳 香港尖沙咀東部科學館道2號",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "室內",
+        "夜晚",
+        "週末",
+        "安靜"
+      ],
+      "display_tags": [
+        "安靜",
+        "週末"
+      ],
+      "date_text": "2026年4月17至9月2日 10:00 AM – 7:00 PM 逢星期一至三,五 (80 天) 2026年4月17至9月2日 10:00 AM – 9:00 PM 逢星期六至日 (40 天)",
+      "start_date": "2026-09-02",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "594b4b660392",
+      "title": "霓裳越千年—隋唐服飾與現代設計",
+      "title_full": "「霓裳越千年—隋唐服飾與現代設計」展覽 @中華文化節 2026",
+      "location": "香港中央圖書館 香港銅鑼灣高士威道66號",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "室內",
+        "夜晚",
+        "安靜"
+      ],
+      "display_tags": [
+        "安靜",
+        "夜晚"
+      ],
+      "date_text": "2026年8月28至9月6日 10:00 AM – 8:00 PM 每日 (10 天)",
+      "start_date": "2026-09-06",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "89802c875afc",
+      "title": "反斗奇兵 Toy Story x PEACEMINUSONE @THE FIRST FAN 香港站",
+      "title_full": "反斗奇兵 Toy Story x PEACEMINUSONE @THE FIRST FAN 香港站",
+      "location": "海港城",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "夜晚"
+      ],
+      "display_tags": [
+        "夜晚"
+      ],
+      "date_text": "2026年8月14至9月7日 10:00 AM – 10:00 PM 每日 (25 天)",
+      "start_date": "2026-09-07",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "397541b471c3",
+      "title": "CENTRESTAGE 香港國際時尚匯展 2026",
+      "title_full": "CENTRESTAGE 香港國際時尚匯展 2026",
+      "location": "香港會議展覽中心Hall 3 灣仔博覽道1號",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "夜晚",
+        "週末",
+        "安靜"
+      ],
+      "display_tags": [
+        "安靜",
+        "週末"
+      ],
+      "date_text": "2026年9月2至4日 10:00 AM – 7:00 PM 每日 (3 天) 2026年9月5日 10:00 AM – 6:00 PM 星期六 (1 天)",
+      "start_date": "2026-09-05",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "5fd50974855a",
+      "title": "雷諾・卡普松小提琴演奏會",
+      "title_full": "雷諾・卡普松小提琴演奏會",
+      "location": "香港大會堂音樂廳",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "室內",
+        "夜晚",
+        "週末",
+        "坐低傾"
+      ],
+      "display_tags": [
+        "坐低傾",
+        "週末"
+      ],
+      "date_text": "2026 年 10 月 11 日 20:00 PM 星期日(1場)",
+      "start_date": "2026-10-11",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "e0394f997f80",
+      "title": "M+夜不同: 聲景魅影",
+      "title_full": "M+夜不同: 聲景魅影",
+      "location": "M+ 多個場地 西九文化區 M+ 大樓",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "夜晚"
+      ],
+      "display_tags": [
+        "夜晚"
+      ],
+      "date_text": "2026年9月4至5日 7:00 PM – 12:00 AM 每日 (1 天)",
+      "start_date": null,
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "5a884c54135d",
+      "title": "汪蘇瀧《明日世界》巡迴演唱會 2026 香港站",
+      "title_full": "汪蘇瀧《明日世界》巡迴演唱會 2026 香港站",
+      "location": "啟德體育園 主場館 香港九龍啟德承啟道38號",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "室內",
+        "夜晚",
+        "熱鬧",
+        "行路多",
+        "大型公演"
+      ],
+      "display_tags": [
+        "熱鬧",
+        "行路多"
+      ],
+      "date_text": "2026年9月4至6日 7:00 PM – 10:00 PM 每日 (3 天)",
+      "start_date": null,
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "6ea75b36a1e6",
+      "title": "IVE “SHOW WHAT I AM” 世界巡迴演唱會 2026 香港站",
+      "title_full": "IVE “SHOW WHAT I AM” 世界巡迴演唱會 2026 香港站",
+      "location": "亞洲國際博覽館 ARENA 香港新界大嶼山航展道1號",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "室內",
+        "夜晚",
+        "週末",
+        "熱鬧",
+        "行路多",
+        "大型公演"
+      ],
+      "display_tags": [
+        "熱鬧",
+        "行路多"
+      ],
+      "date_text": "2026年9月4日 8:00 PM – 10:00 PM 星期五 (1 天) 2026年9月5日 6:00 PM – 8:00 PM 星期六 (1 天) 2026年9月6日 6:00 PM – 8:00 PM 星期日 (1 天)",
+      "start_date": "2026-09-04",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    },
+    {
+      "id": "d54e5046bb52",
+      "title": "繼續寵愛.張國榮70誕辰 音樂會 2026",
+      "title_full": "繼續寵愛.張國榮70誕辰 音樂會 2026",
+      "location": "西九文化區 竹翠公園 香港西九文化區博物館道18號",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "戶外",
+        "夜晚",
+        "週末",
+        "熱鬧",
+        "坐低傾"
+      ],
+      "display_tags": [
+        "熱鬧",
+        "坐低傾"
+      ],
+      "date_text": "2026年9月12日 7:15 PM – 10:15 PM 星期六 (1 天)",
+      "start_date": "2026-09-12",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+    }
+  ],
+  "sources": [
+    {
+      "source": "康文署／香港文化中心",
+      "url": "https://www.lcsd.gov.hk/tc/hkcc/programmes/audbuilding/freeculturalprogrammes.html",
+      "ok": true,
+      "count": 2,
+      "error": null
+    },
+    {
+      "source": "新假期",
+      "url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/",
+      "ok": true,
+      "count": 20,
+      "error": null
+    },
+    {
+      "source": "Timable",
+      "url": "https://timable.com/hk/zh/",
+      "ok": false,
+      "skipped": true,
+      "count": 0,
+      "error": "Skipped: https://timable.com/robots.txt sets `User-agent: *` → `Disallow: /`. Personal scraper must not crawl against that. No events fetched."
+    },
+    {
+      "source": "康文署每月節目表（探測）",
+      "url": "https://www.lcsd.gov.hk/tc/hkcc/programmes/currentmonth.html",
+      "ok": false,
+      "skipped": true,
+      "count": 0,
+      "error": "Soft-skip: HKCC monthly calendar / performing-arts e-calendar appear JS-rendered; static HTML lacks parseable event rows. Culture search AJAX also unavailable. https://www.lcsd.gov.hk/tc/hkcc/programmes/currentmonth.html: no structured programme table in static HTML | https://www.performing-arts.gov.hk/tc/e-calendar.html?subscribe_code=HKCC: no structured programme table in static HTML"
+    }
+  ]
+}

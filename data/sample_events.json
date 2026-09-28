@@ -1,0 +1,48 @@
+{
+  "updated_at": "2026-09-26T00:00:00+0800",
+  "note": "Hand-curated seed for offline/demo when scrapers fail. Budget only when known.",
+  "events": [
+    {
+      "id": "sample001",
+      "title": "青年舞台@HKCC — 週末拉闊音樂會（樣本）",
+      "location": "香港文化中心大堂",
+      "budget": "免費",
+      "budget_tag": "免費",
+      "tags": ["室內", "半日", "週末", "免費", "坐低傾"],
+      "display_tags": ["週末", "半日"],
+      "date_text": "2026-10-17（六）15:00–16:30",
+      "start_date": "2026-10-17",
+      "end_date": null,
+      "source": "手選樣本",
+      "source_url": "https://www.lcsd.gov.hk/tc/hkcc/programmes/audbuilding/freeculturalprogrammes.html"
+    },
+    {
+      "id": "sample002",
+      "title": "週末海濱市集散步（樣本）",
+      "location": "灣仔海濱活動空間",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": ["戶外", "週末", "熱鬧", "行路多"],
+      "display_tags": ["週末", "戶外"],
+      "date_text": "逢星期六 10:00–18:00",
+      "start_date": null,
+      "end_date": null,
+      "source": "手選樣本",
+      "source_url": "https://www.weekendhk.com/"
+    },
+    {
+      "id": "sample003",
+      "title": "夜間戶外音樂會（樣本）",
+      "location": "西九文化區竹翠公園",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": ["戶外", "夜晚", "週末", "大型公演", "熱鬧"],
+      "display_tags": ["週末", "夜晚"],
+      "date_text": "週末夜間（樣本）",
+      "start_date": null,
+      "end_date": null,
+      "source": "手選樣本",
+      "source_url": "https://www.weekendhk.com/"
+    }
+  ]
+}
