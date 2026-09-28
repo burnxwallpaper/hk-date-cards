@@ -1,4 +1,4 @@
-"""新假期 WeekendHK — public weekend activities roundup article (read-only)."""
+"""新假期 WeekendHK — public weekend / market / exhibition roundup articles (read-only)."""
 from __future__ import annotations
 
 import re
@@ -16,26 +16,67 @@ DEFAULT_URL = (
 )
 CATEGORY_URL = "https://www.weekendhk.com/category/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/"
 
+# Prefer articles whose titles suggest markets / exhibitions / malls / open days / roundups
+ARTICLE_TITLE_KW = (
+    "本週末",
+    "好去處",
+    "熱門活動",
+    "市集",
+    "展覽",
+    "美術館",
+    "商場",
+    "開放日",
+    "快閃",
+    "燈",
+    "嘉年華",
+    "花燈",
+    "夜",
+)
+MAX_ARTICLES = 5
 
-def _find_roundup_url(session=None) -> str:
-    """Prefer the known roundup; else pick latest category article matching 本週末/好去處."""
+
+def _article_urls(session=None) -> list[str]:
+    """Collect up to MAX_ARTICLES relevant public article URLs."""
+    found: list[str] = []
+    seen: set[str] = set()
+
+    def add(url: str) -> None:
+        url = url.split("#")[0].rstrip("/") + "/"
+        if url in seen:
+            return
+        if "weekendhk.com" not in url:
+            return
+        # skip category/tag/search hubs
+        if any(x in url for x in ("/category/", "/tag/", "/?", "/author/", "/page/")):
+            return
+        seen.add(url)
+        found.append(url)
+
+    # Prefer known roundup if alive
     try:
         resp = polite_get(DEFAULT_URL, session=session)
         if resp.status_code == 200 and "日期" in resp.text:
-            return DEFAULT_URL
+            add(DEFAULT_URL)
     except Exception:
         pass
+
     try:
         resp = polite_get(CATEGORY_URL, session=session)
         soup = soup_html(resp.text)
         for a in soup.select("a[href]"):
             href = a.get("href") or ""
             text = clean_text(a.get_text(" ", strip=True))
-            if "本週末" in text or "好去處2026" in text or "熱門活動推介" in text:
-                return urljoin(CATEGORY_URL, href)
+            if not any(k in text for k in ARTICLE_TITLE_KW):
+                continue
+            add(urljoin(CATEGORY_URL, href))
+            if len(found) >= MAX_ARTICLES:
+                break
     except Exception:
         pass
-    return DEFAULT_URL
+
+    if not found:
+        found = [DEFAULT_URL]
+    return found[:MAX_ARTICLES]
 
 
 def _parse_start_date(date_text: str) -> str | None:
@@ -51,69 +92,110 @@ def _parse_start_date(date_text: str) -> str | None:
     return None
 
 
+def _type_hint_from_title(title: str, joined: str) -> str | None:
+    blob = f"{title} {joined}"
+    if any(k in blob for k in ("舞火龍", "煙花", "亮燈", "綵燈", "倒數")):
+        return "夜景散步"
+    if any(k in blob for k in ("體檢", "VetCare")):
+        return "開放日"
+    if any(k in blob for k in ("市集", "墟", "嘉年華")):
+        return "市集"
+    if any(k in blob for k in ("開放日",)):
+        return "開放日"
+    if any(k in blob for k in ("美術館", "博物館", "藝術館")):
+        return "美術館"
+    if any(k in blob for k in ("展覽", "展覧")):
+        return "展覽"
+    if any(k in blob for k in ("商場", "快閃", "pop-up", "Pop-up")):
+        return "商場漫遊"
+    if any(k in blob for k in ("演唱會", "音樂會", "演奏會", "公演", "舞台")):
+        return "表演"
+    if any(k in blob for k in ("燈", "夜景", "煙花", "亮燈")):
+        return "夜景散步"
+    if any(k in blob for k in ("大堂", "長廳")):
+        return "長廳"
+    return None
+
+
+def _parse_article(url: str, session=None) -> list[dict[str, Any]]:
+    resp = polite_get(url, session=session)
+    soup = soup_html(resp.text)
+    events: list[dict[str, Any]] = []
+
+    for table in soup.find_all("table"):
+        rows = table.find_all("tr")
+        cells = []
+        for tr in rows:
+            for td in tr.find_all(["td", "th"]):
+                cells.append(clean_text(td.get_text(" ", strip=True)))
+        cells = [c for c in cells if c]
+        if len(cells) < 2:
+            continue
+        joined = " ".join(cells)
+        if "地點" not in joined and not any(c.startswith("地點") for c in cells):
+            continue
+        # Skip placeholder/demo tables
+        if "Lorem" in joined or "Ipsum" in joined:
+            continue
+
+        title = strip_detail_suffix(cells[0])
+        date_text = ""
+        location = ""
+        for i, c in enumerate(cells):
+            if c in ("日期", "地點"):
+                continue
+            if c.startswith("日期：") or c.startswith("日期:"):
+                date_text = clean_text(c.split("：", 1)[-1].split(":", 1)[-1])
+            elif c.startswith("地點：") or c.startswith("地點:"):
+                location = clean_text(c.split("：", 1)[-1].split(":", 1)[-1])
+            elif i > 0 and cells[i - 1] == "日期":
+                date_text = c
+            elif i > 0 and cells[i - 1] == "地點":
+                location = c
+
+        if not title or not location:
+            continue
+        if title in ("日期", "地點", "適用日子", "時間", "收費", "詳情"):
+            continue
+        if len(title) < 4:
+            continue
+
+        budget_blob = f"{title} {joined}"
+        start_date = _parse_start_date(date_text)
+        type_hint = _type_hint_from_title(title, joined)
+        ev = make_event(
+            title=title,
+            location=location,
+            source=SOURCE,
+            source_url=url,
+            date_text=date_text,
+            start_date=start_date,
+            budget_text=budget_blob,
+            extra_text=joined,
+            type_hint=type_hint,
+            tags_extra=[type_hint] if type_hint else None,
+        )
+        events.append(ev)
+    return events
+
+
 def fetch_events(session=None) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     meta: dict[str, Any] = {"source": SOURCE, "url": None, "ok": False, "count": 0, "error": None}
     try:
-        url = _find_roundup_url(session=session)
-        meta["url"] = url
-        resp = polite_get(url, session=session)
-        soup = soup_html(resp.text)
+        urls = _article_urls(session=session)
+        meta["url"] = urls[0] if urls else None
+        meta["urls"] = urls
         events: list[dict[str, Any]] = []
-
-        for table in soup.find_all("table"):
-            rows = table.find_all("tr")
-            cells = []
-            for tr in rows:
-                for td in tr.find_all(["td", "th"]):
-                    cells.append(clean_text(td.get_text(" ", strip=True)))
-            cells = [c for c in cells if c]
-            if len(cells) < 2:
-                continue
-            joined = " ".join(cells)
-            if "地點" not in joined and not any(c.startswith("地點") for c in cells):
-                continue
-            # Skip placeholder/demo tables
-            if "Lorem" in joined or "Ipsum" in joined:
-                continue
-
-            title = strip_detail_suffix(cells[0])
-            date_text = ""
-            location = ""
-            for i, c in enumerate(cells):
-                if c in ("日期", "地點"):
-                    continue
-                if c.startswith("日期：") or c.startswith("日期:"):
-                    date_text = clean_text(c.split("：", 1)[-1].split(":", 1)[-1])
-                elif c.startswith("地點：") or c.startswith("地點:"):
-                    location = clean_text(c.split("：", 1)[-1].split(":", 1)[-1])
-                elif i > 0 and cells[i - 1] == "日期":
-                    date_text = c
-                elif i > 0 and cells[i - 1] == "地點":
-                    location = c
-
-            if not title or not location:
-                continue
-            if title in ("日期", "地點"):
-                continue
-
-            # Budget only from title + table cells (paragraphs often mention free side-perks).
-            budget_blob = f"{title} {joined}"
-
-            start_date = _parse_start_date(date_text)
-            ev = make_event(
-                title=title,
-                location=location,
-                source=SOURCE,
-                source_url=url,
-                date_text=date_text,
-                start_date=start_date,
-                budget_text=budget_blob,
-                extra_text=joined,
-            )
-            events.append(ev)
-
+        errors: list[str] = []
+        for url in urls:
+            try:
+                events.extend(_parse_article(url, session=session))
+            except Exception as e:
+                errors.append(f"{url}: {type(e).__name__}: {e}")
         meta["ok"] = True
         meta["count"] = len(events)
+        if errors:
+            meta["note"] = " | ".join(errors[:5])
         return events, meta
     except Exception as e:
         meta["error"] = f"{type(e).__name__}: {e}"

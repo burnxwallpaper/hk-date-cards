@@ -57,9 +57,13 @@ def fetch_events(session=None) -> tuple[list[dict[str, Any]], dict[str, Any]]:
             location = kv.get("地點") or "香港文化中心"
             date_text, start_date = _parse_date_bits(date_raw)
             extra = " ".join(f"{k} {v}" for k, v in kv.items())
-            tags_extra = ["室內"]
+            tags_extra = ["室內", "長廳"]
             if re.search(r"[（(]六[）)]|星期六|週末|周末", date_text + title):
                 tags_extra += ["週末", "半日"]
+            type_hint = "長廳"
+            if any(k in title for k in ("音樂會", "演奏會", "演唱會", "公演", "表演")):
+                type_hint = "表演"
+                tags_extra = [t for t in tags_extra if t != "長廳"] + ["表演"]
             ev = make_event(
                 title=title,
                 location=location,
@@ -70,6 +74,7 @@ def fetch_events(session=None) -> tuple[list[dict[str, Any]], dict[str, Any]]:
                 budget_text="免費入場" if page_free else kv.get("budget", ""),
                 extra_text=extra,
                 tags_extra=tags_extra,
+                type_hint=type_hint,
             )
             events.append(ev)
 

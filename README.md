@@ -1,23 +1,7 @@
-# 香港約會卡片（個人 MVP）
+# 香港約會卡片（GitHub Pages）
 
-公開活動精簡卡：tag｜名｜預算｜地點。無付款、無廣告、無推播。
+Live: https://burnxwallpaper.github.io/hk-date-cards/
 
-**線上：** https://burnxwallpaper.github.io/hk-date-cards/
+Pages 根目錄直接服務 `index.html` + `app.js` + `style.css` + `data/events.json`。
 
-## 本機
-
-```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-python refresh.py
-python -m http.server 8765 --bind 127.0.0.1
-# http://127.0.0.1:8765/
-```
-
-## 來源
-
-- 康文署／香港文化中心免費節目（可用）
-- 新假期公開表（best-effort）
-- Timable：robots.txt Disallow → 唔爬
-
-刷新後 commit `data/events.json` 即更新 GitHub Pages。
+開發／刷新請見 repo 內 `refresh.py` 與 `scrapers/`。

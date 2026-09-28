@@ -129,7 +129,7 @@
   });
   els.reset.addEventListener("click", setDefaults);
 
-  const dataUrl = new URL("./data/events.json", window.location.href).href;
+  const dataUrl = new URL("../data/events.json", window.location.href).href;
 
   fetch(dataUrl)
     .then((r) => {
