@@ -129,7 +129,10 @@
   });
   els.reset.addEventListener("click", setDefaults);
 
-  const dataUrl = new URL("../data/events.json", window.location.href).href;
+  // GitHub Pages serves from repo root → ./data/; opening web/ locally → ../data/
+  const path = (window.location.pathname || "").replace(/\\/g, "/");
+  const inWeb = path.includes("/web/") || /\/web\/?$/.test(path);
+  const dataUrl = new URL(inWeb ? "../data/events.json" : "./data/events.json", window.location.href).href;
 
   fetch(dataUrl)
     .then((r) => {
