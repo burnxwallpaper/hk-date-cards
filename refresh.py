@@ -15,7 +15,7 @@ OUT = DATA / "events.json"
 LOG = DATA / "refresh_log.json"
 SAMPLE = DATA / "sample_events.json"
 
-from scrapers.common import dedupe_events, now_hkt_iso
+from scrapers.common import dedupe_events, drop_expired_events, now_hkt_iso, postprocess_events
 from scrapers import (
     lcsd_free,
     weekendhk,
@@ -67,6 +67,10 @@ def main() -> int:
             events.extend(evs)
 
         events = dedupe_events(events)
+        events, n_expired = drop_expired_events(events)
+        if n_expired:
+            print(f"  dropped {n_expired} expired event(s) (past end/session date HKT)", flush=True)
+        events = postprocess_events(events)
         if not events:
             print("No live events; seeding from sample_events.json", flush=True)
             events = load_sample()

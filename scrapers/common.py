@@ -643,3 +643,255 @@ def dedupe_events(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 def now_hkt_iso() -> str:
     return datetime.now(HKT).strftime("%Y-%m-%dT%H:%M:%S%z")
+
+
+# --- Post-dedupe card disambiguation -----------------------------------------
+
+_VAGUE_LOCATION_RE = re.compile(r"不同地點|詳情請瀏覽|多個地點")
+
+
+def is_vague_location(loc: str | None) -> bool:
+    """True when location is a placeholder rather than a concrete venue."""
+    s = clean_text(loc or "")
+    if not s or s == "地點待查":
+        return True
+    return bool(_VAGUE_LOCATION_RE.search(s))
+
+
+def short_date_label(ev: dict[str, Any]) -> str:
+    """Compact day.month label for card titles, e.g. 5.9 from 2026-09-05."""
+    sd = (ev.get("start_date") or "").strip()
+    if re.match(r"^\d{4}-\d{2}-\d{2}$", sd):
+        _y, m, d = sd.split("-")
+        return f"{int(d)}.{int(m)}"
+    dt = clean_text(ev.get("date_text") or "")
+    # 5.9.2026 or 5.9.26
+    m = re.match(r"(\d{1,2})\.(\d{1,2})(?:\.\d{2,4})?", dt)
+    if m:
+        return f"{int(m.group(1))}.{int(m.group(2))}"
+    # 2026年9月5日 / 2026年9月5至6日
+    m = re.search(r"(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日?", dt)
+    if m:
+        return f"{int(m.group(3))}.{int(m.group(2))}"
+    # 9月5日
+    m = re.search(r"(\d{1,2})\s*月\s*(\d{1,2})\s*日", dt)
+    if m:
+        return f"{int(m.group(2))}.{int(m.group(1))}"
+    if sd:
+        return sd
+    return dt[:12] if dt else ""
+
+
+
+def _parse_iso_date(s: str | None):
+    """Parse YYYY-MM-DD → datetime.date, else None."""
+    from datetime import date as _date
+
+    s = (s or "").strip()
+    m = re.match(r"^(\d{4})-(\d{2})-(\d{2})$", s)
+    if not m:
+        return None
+    try:
+        return _date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+    except ValueError:
+        return None
+
+
+def _parse_dates_from_text(date_text: str) -> list:
+    """Best-effort extract concrete calendar dates from date_text (HKT local)."""
+    from datetime import date as _date
+
+    t = clean_text(date_text or "")
+    if not t:
+        return []
+    out: list = []
+
+    def add(y: int, m: int, d: int) -> None:
+        try:
+            out.append(_date(y, m, d))
+        except ValueError:
+            pass
+
+    # ISO ranges / singles: 2026-09-23 至 2026-11-29
+    for m in re.finditer(r"(\d{4})-(\d{2})-(\d{2})", t):
+        add(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+
+    # d.m.yyyy or d.m.yy — 5.9.2026
+    for m in re.finditer(r"\b(\d{1,2})\.(\d{1,2})\.(\d{2,4})\b", t):
+        d, mo, y = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        if y < 100:
+            y += 2000
+        add(y, mo, d)
+
+    # 2026年9月10日至10月22日 / 2026年4月17至9月2日 / 2026年9月5至27日 / 2026年9月5日
+    for m in re.finditer(
+        r"(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日?"
+        r"(?:\s*[至到\-–—~～]\s*"
+        r"(?:(\d{4})\s*年\s*)?(\d{1,2})\s*月\s*(\d{1,2})\s*日?"
+        r"|"
+        r"\s*[至到\-–—~～]\s*(\d{1,2})\s*日)?",
+        t,
+    ):
+        y1, m1, d1 = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        add(y1, m1, d1)
+        if m.group(6):  # full or month-day end: ...至[yyyy年]M月D日
+            y2 = int(m.group(4)) if m.group(4) else y1
+            add(y2, int(m.group(5)), int(m.group(6)))
+        elif m.group(7):  # same-month end: 9月5至27日
+            add(y1, m1, int(m.group(7)))
+
+    # Bare 9月6日 / 9月13日 (inherit year from any ISO/year already found, else current HKT year)
+    years = [d.year for d in out]
+    default_year = years[0] if years else datetime.now(HKT).year
+    for m in re.finditer(r"(?<!\d)(\d{1,2})\s*月\s*(\d{1,2})\s*日", t):
+        add(default_year, int(m.group(1)), int(m.group(2)))
+
+    # de-dupe preserve
+    seen = set()
+    uniq = []
+    for d in out:
+        if d not in seen:
+            seen.add(d)
+            uniq.append(d)
+    return uniq
+
+
+def _is_evergreen_or_open_recurring(ev: dict[str, Any]) -> bool:
+    """Permanent venues / open-ended 每逢 series with no concrete end → never expire."""
+    dt = clean_text(ev.get("date_text") or "")
+    title = clean_text(ev.get("title") or "") + " " + clean_text(ev.get("title_full") or "")
+    blob = f"{dt} {title}"
+    if re.search(r"常設|長期開放|全年開放|永久", blob):
+        return True
+    tags = set(ev.get("tags") or [])
+    # Evergreen card types with no concrete end date in text
+    evergreen_types = {"長廳", "商場漫遊", "室內打卡", "美術館"}
+    has_concrete = bool(_parse_dates_from_text(dt)) or bool(ev.get("end_date") or ev.get("start_date"))
+    if (tags & evergreen_types) and not has_concrete and not dt:
+        return True
+    # Open recurring with no year-bounded range end (e.g. 每逢週末 alone)
+    if re.search(r"每逢|逢星期|逢週|逢周六|逢週末|逢星期六|逢星期日", dt):
+        dates = _parse_dates_from_text(dt)
+        if not dates:
+            return True
+    return False
+
+
+def event_last_date(ev: dict[str, Any]):
+    """Latest known date for expiry checks, or None if unknown / evergreen.
+
+    Prefer end_date; else max date parsed from date_text; else start_date
+    for a specific session. Unparseable / evergreen / open recurring → None.
+    """
+    if _is_evergreen_or_open_recurring(ev):
+        # Still honour an explicit past end_date if present
+        ed = _parse_iso_date(ev.get("end_date"))
+        if ed is not None:
+            return ed
+        # If date_text has a bounded range, use its last date even for 逢…
+        parsed = _parse_dates_from_text(ev.get("date_text") or "")
+        if parsed:
+            return max(parsed)
+        return None
+
+    ed = _parse_iso_date(ev.get("end_date"))
+    if ed is not None:
+        return ed
+
+    parsed = _parse_dates_from_text(ev.get("date_text") or "")
+    if parsed:
+        return max(parsed)
+
+    sd = _parse_iso_date(ev.get("start_date"))
+    if sd is not None:
+        return sd
+
+    return None
+
+
+def drop_expired_events(
+    events: list[dict[str, Any]],
+    *,
+    today=None,
+) -> tuple[list[dict[str, Any]], int]:
+    """Drop events whose last known date is already past today (Asia/Hong_Kong).
+
+    Keep evergreen / permanent (常設, 長廳, …) and open recurring (每逢…) with
+    no concrete end. Unparseable dates → keep (do not invent expiry).
+    Returns (kept_events, dropped_count).
+    """
+    from datetime import date as _date
+
+    if today is None:
+        today = datetime.now(HKT).date()
+    elif isinstance(today, str):
+        today = _parse_iso_date(today) or datetime.now(HKT).date()
+
+    kept: list[dict[str, Any]] = []
+    dropped = 0
+    for ev in events:
+        last = event_last_date(ev)
+        if last is not None and last < today:
+            dropped += 1
+            continue
+        kept.append(ev)
+    return kept, dropped
+
+
+def postprocess_events(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """After dedupe_events:
+
+    1. Same normalized title, vague location vs specific → drop vague.
+    2. Same normalized title + same venue, different dates → append · D.M
+       to card ``title`` (``title_full`` unchanged) so UI cards differ.
+    """
+    if not events:
+        return events
+
+    # Group by normalized short title
+    by_title: dict[str, list[dict[str, Any]]] = {}
+    for ev in events:
+        key = normalize_title_key(ev.get("title") or "")
+        by_title.setdefault(key, []).append(ev)
+
+    drop_ids: set[str] = set()
+    for _key, group in by_title.items():
+        if len(group) < 2:
+            continue
+        specific = [e for e in group if not is_vague_location(e.get("location"))]
+        vague = [e for e in group if is_vague_location(e.get("location"))]
+        if specific and vague:
+            for e in vague:
+                eid = e.get("id")
+                if eid:
+                    drop_ids.add(eid)
+
+    kept = [e for e in events if e.get("id") not in drop_ids]
+
+    # Re-group remaining by title+venue for date disambiguation
+    by_tv: dict[str, list[dict[str, Any]]] = {}
+    for ev in kept:
+        key = (
+            f"{normalize_title_key(ev.get('title') or '')}|"
+            f"{normalize_venue_key(ev.get('location') or '')}"
+        )
+        by_tv.setdefault(key, []).append(ev)
+
+    for _key, group in by_tv.items():
+        if len(group) < 2:
+            continue
+        date_keys = {
+            (e.get("start_date") or e.get("date_text") or "").strip() for e in group
+        }
+        if len(date_keys) <= 1:
+            continue
+        for e in group:
+            # Skip if title already carries a · date suffix
+            if " · " in (e.get("title") or ""):
+                continue
+            label = short_date_label(e)
+            if not label:
+                continue
+            e["title"] = f"{e['title']} · {label}"
+
+    return kept
