@@ -133,44 +133,94 @@ def normalize_venue_key(venue: str) -> str:
     return v
 
 
+def _extract_price_amounts(text: str) -> list[int]:
+    """Pull explicit HKD amounts from text. Never invent — digits must appear with currency cues."""
+    t = clean_text(text)
+    if not t:
+        return []
+    amounts: list[int] = []
+
+    def _to_int(raw: str) -> int | None:
+        s = raw.replace(",", "").replace("，", "")
+        if not s.isdigit():
+            return None
+        return int(s)
+
+    # HK$200 / HKD 200 / 港幣$50 / 港幣$1,100 / 港幣 50 / $80 / $1,380
+    for x in re.findall(
+        r"(?:HK\s*\$|HKD|港幣\s*\$|港幣|\$)\s*(\d{1,3}(?:[,，]\d{3})+|\d{1,5})(?!\d)",
+        t,
+        re.I,
+    ):
+        n = _to_int(x)
+        if n is not None:
+            amounts.append(n)
+    # 門票金額：120 / 票價：80 / 入場費 30 (no currency symbol, but labeled)
+    for x in re.findall(
+        r"(?:門票金額|門票|票價|入場費|收費|票價為|票價是)\s*[:：]?\s*(\d{1,3}(?:[,，]\d{3})+|\d{1,5})\s*(?:元|港幣|HKD?)?",
+        t,
+        re.I,
+    ):
+        n = _to_int(x)
+        if n is not None:
+            amounts.append(n)
+    # 120元 / 80 元
+    for x in re.findall(r"(?<![\d\.])(\d{2,5})\s*元", t):
+        amounts.append(int(x))
+    # de-dupe preserve order
+    seen: set[int] = set()
+    out: list[int] = []
+    for a in amounts:
+        if a <= 0 or a > 50000:
+            continue
+        if a not in seen:
+            seen.add(a)
+            out.append(a)
+    return out
+
+
 def parse_budget_from_text(text: str) -> tuple[str, str | None]:
     """
     Return (budget_display, budget_tag_or_None).
     Never invent prices — only explicit free / $ amounts.
+    If both a $ amount and a conditional「免費」aside appear, prefer the explicit price
+    (LOCKED: never leave 未知 when $ / 港幣 / 門票金額 is visible).
     """
     t = clean_text(text)
     if not t:
         return "未知", None
+
+    amounts = _extract_price_amounts(t)
+    if amounts:
+        lo, hi = min(amounts), max(amounts)
+        display = f"${lo}" if lo == hi else f"${lo}–{hi}"
+        # Map by lowest listed price (entry floor)
+        if lo <= 100:
+            tag = "$100內"
+        elif lo <= 300:
+            tag = "$100–300"
+        elif lo <= 600:
+            tag = "$300–600"
+        else:
+            tag = "$600+"
+        return display, tag
+
     # Strong free signals only — ignore "免費特飲/免費燈籠" promo asides in long blurbs.
     if re.search(
         r"免費入場|免費參加|免費參觀|免費開放|免費體檢|免費文化|免費導賞|"
         r"免費對外|費用全免|無需門票|免票|公開展出|常設展覽免費|"
-        r"Free Admission|free admission|admission\s*free|費用：?\s*免費|收費：?\s*免費|"
+        r"Free Admission|free admission|admission\s*free|"
+        r"費用\s*[：:]\s*免費|收費\s*[：:]\s*免費|票價\s*[：:]?\s*免費|"
         r"^免費$|(?:^|[【\s])免費(?:活動|節目|音樂會|演奏會|市集|展覽|參觀)",
         t,
         re.I,
     ):
         return "免費", "免費"
     # Title-level: short strings that literally start with 免費…
-    if len(t) <= 80 and re.match(r"^免費", t) and not re.search(r"\$\s*\d+|HK\$\s*\d+", t):
+    if len(t) <= 80 and re.match(r"^免費", t):
         return "免費", "免費"
 
-    amounts = [int(x) for x in re.findall(r"(?:HK\$|港幣|\$)\s*(\d{1,5})", t)]
-    amounts += [int(x) for x in re.findall(r"(\d{2,5})\s*元", t)]
-    if not amounts:
-        return "未知", None
-    lo, hi = min(amounts), max(amounts)
-    display = f"${lo}" if lo == hi else f"${lo}–{hi}"
-    # Map by lowest listed price (entry floor)
-    if lo <= 100:
-        tag = "$100內"
-    elif lo <= 300:
-        tag = "$100–300"
-    elif lo <= 600:
-        tag = "$300–600"
-    else:
-        tag = "$600+"
-    return display, tag
+    return "未知", None
 
 
 def looks_paid(text: str) -> bool:
@@ -178,11 +228,9 @@ def looks_paid(text: str) -> bool:
     t = clean_text(text)
     if not t:
         return False
-    if re.search(r"(?:HK\$|港幣|\$)\s*\d{1,5}", t):
+    if _extract_price_amounts(t):
         return True
-    if re.search(r"\d{2,5}\s*元", t):
-        return True
-    if re.search(r"(門票|票價|收費|入場費)", t) and not re.search(r"免費", t):
+    if re.search(r"(門票|票價|收費|入場費|門票金額)", t) and not re.search(r"免費", t):
         return True
     return False
 
@@ -551,6 +599,7 @@ def make_event(
     extra_text: str = "",
     tags_extra: list[str] | None = None,
     type_hint: str | None = None,
+    evergreen: bool = False,
 ) -> dict[str, Any]:
     title_full = strip_detail_suffix(title)
     title = short_title(title_full)
@@ -606,6 +655,7 @@ def make_event(
         "end_date": end_date,
         "source": source,
         "source_url": source_url,
+        "evergreen": bool(evergreen),
     }
 
 
@@ -836,6 +886,327 @@ def drop_expired_events(
             continue
         kept.append(ev)
     return kept, dropped
+
+
+def extract_admission_text(html: str) -> str:
+    """
+    Pull admission / ticket-price section text from a detail page.
+    Prefer structured DiscoverHK ticketPrice nodes; else a short window around
+    票價／門票／收費／Admission. Empty string if nothing useful.
+    """
+    if not html:
+        return ""
+    soup = soup_html(html)
+    parts: list[str] = []
+    for el in soup.select('[data-event-property="ticketPrice"]'):
+        p = clean_text(el.get_text(" ", strip=True))
+        if p:
+            parts.append(p)
+    if parts:
+        return "票價 " + " ".join(parts)
+
+    text = clean_text(soup.get_text(" ", strip=True))
+    if not text:
+        return ""
+    # Window: label → next field (購票/查詢/網址/主辦…)
+    m = re.search(
+        r"(?:票價|門票金額|門票|入場費|收費|Admission(?:\s*Fee)?|Ticket\s*Price)"
+        r"\s*[:：]?\s*(.+?)"
+        r"(?=\s*(?:購票|查詢|網址|主辦機構|聯絡|Close|展開|收起|$))",
+        text,
+        re.I,
+    )
+    if m:
+        return clean_text(m.group(0))[:500]
+    # Free-only admission cue without a 票價 label
+    m = re.search(
+        r".{0,10}(?:免費入場|免費參觀|免費開放|Free Admission|admission\s*free).{0,40}",
+        text,
+        re.I,
+    )
+    if m:
+        return clean_text(m.group(0))[:200]
+    return ""
+
+
+
+def _prop_texts(soup, prop: str) -> list[str]:
+    out: list[str] = []
+    for el in soup.select(f'[data-event-property="{prop}"]'):
+        p = clean_text(el.get_text(" ", strip=True))
+        if p:
+            out.append(p)
+    return out
+
+
+_TIME_OF_DAY_RE = re.compile(
+    r"(\d{1,2}\s*[:：]\s*\d{2}|\d{1,2}\s*[時点]\s*\d{0,2}\s*分?"
+    r"|\d{1,2}\s*(?:am|pm|AM|PM)|上午|下午|晚上|午|閉館|開放時間)",
+    re.I,
+)
+
+
+def date_text_is_weak(date_text: str | None) -> bool:
+    """True when card has no usable schedule, or only ISO dates without clock time."""
+    s = clean_text(date_text or "")
+    if not s:
+        return True
+    # Already has clock / session wording → keep
+    if _TIME_OF_DAY_RE.search(s):
+        return False
+    # Pure ISO / ISO range only → weak (enrichable)
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}(?:\s*至\s*\d{4}-\d{2}-\d{2})?", s):
+        return True
+    # Very short date-only without time
+    if len(s) <= 16 and not _TIME_OF_DAY_RE.search(s):
+        return True
+    return False
+
+
+def extract_schedule_text(html: str) -> str:
+    """
+    Pull explicit date/time text from a detail page. Never invent.
+    Prefer DiscoverHK eventDetailDate + eventTime; else labeled 日期/時間 windows.
+    """
+    if not html:
+        return ""
+    soup = soup_html(html)
+    date_parts = _prop_texts(soup, "eventDetailDate")
+    time_parts = _prop_texts(soup, "eventTime")
+    chunks: list[str] = []
+    if date_parts:
+        chunks.append(date_parts[0])
+    if time_parts:
+        # Keep first sentence-ish of opening hours; cap length for cards
+        tp = time_parts[0]
+        # Prefer opening-hours clause before long performance calendars
+        m = re.split(r"(?:開幕周|期間限定|查詢|購票)", tp, maxsplit=1)
+        tp = clean_text(m[0] if m else tp)
+        if len(tp) > 100:
+            tp = tp[:97].rstrip("，,;；、 ") + "…"
+        if tp:
+            chunks.append(tp)
+    if chunks:
+        return clean_text(" ".join(chunks))[:220]
+
+    text = clean_text(soup.get_text(" ", strip=True))
+    if not text:
+        return ""
+    date_m = re.search(
+        r"日期\s*[:：]?\s*(.+?)(?=\s*(?:時間|地點|票價|購票|查詢|網址|主辦機構|$))",
+        text,
+    )
+    time_m = re.search(
+        r"時間\s*[:：]?\s*(.+?)(?=\s*(?:地點|票價|購票|查詢|網址|主辦機構|開幕周|$))",
+        text,
+    )
+    parts: list[str] = []
+    if date_m:
+        parts.append(clean_text(date_m.group(1))[:80])
+    if time_m:
+        tm = clean_text(time_m.group(1))
+        if _TIME_OF_DAY_RE.search(tm):
+            if len(tm) > 100:
+                tm = tm[:97].rstrip("，,;；、 ") + "…"
+            parts.append(tm)
+    if parts and any(_TIME_OF_DAY_RE.search(p) or re.search(r"\d{4}\s*年|\d{1,2}\s*月", p) for p in parts):
+        return clean_text(" ".join(parts))[:220]
+    return ""
+
+
+def short_schedule_label(ev: dict[str, Any]) -> str:
+    """
+    Shortened time line for cards, e.g. 「9/28 六 3–4:30pm」.
+    Empty string when nothing explicit — UI must omit the row (never 待定/未知).
+    """
+    raw = clean_text(ev.get("date_text") or "")
+    if not raw:
+        sd = (ev.get("start_date") or "").strip()
+        ed = (ev.get("end_date") or "").strip()
+        if sd and ed and sd != ed:
+            # ISO-only fallback — still show compact date range (no clock)
+            def _md(iso: str) -> str:
+                m = re.match(r"^(\d{4})-(\d{2})-(\d{2})$", iso)
+                if not m:
+                    return iso
+                return f"{int(m.group(2))}/{int(m.group(3))}"
+            return f"{_md(sd)}–{_md(ed)}"
+        if sd:
+            m = re.match(r"^(\d{4})-(\d{2})-(\d{2})$", sd)
+            if m:
+                return f"{int(m.group(2))}/{int(m.group(3))}"
+            return sd
+        return ""
+
+    s = raw
+    # 17.10.2026 (六) 3pm – 4:30pm → 10/17 六 3–4:30pm
+    m = re.match(
+        r"(\d{1,2})\.(\d{1,2})\.(\d{2,4})\s*(?:\(([^)]+)\))?\s*(.*)$",
+        s,
+    )
+    if m:
+        d, mo = int(m.group(1)), int(m.group(2))
+        wd = (m.group(4) or "").strip()
+        rest = clean_text(m.group(5) or "")
+        rest = rest.replace("–", "–").replace("—", "–")
+        rest = re.sub(r"\s*–\s*", "–", rest)
+        rest = re.sub(r"\s+", " ", rest)
+        bits = [f"{mo}/{d}"]
+        if wd:
+            bits.append(wd)
+        if rest:
+            bits.append(rest)
+        return " ".join(bits)[:60]
+
+    # 2026年9月25日至2027年1月3日 …
+    m = re.match(
+        r"(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日"
+        r"(?:\s*[至到\-–—~～]\s*(?:(\d{4})\s*年\s*)?(\d{1,2})\s*月\s*(\d{1,2})\s*日)?\s*(.*)$",
+        s,
+    )
+    if m:
+        y1, mo1, d1 = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        rest = clean_text(m.group(7) or "")
+        if m.group(6):
+            y2 = int(m.group(4)) if m.group(4) else y1
+            mo2, d2 = int(m.group(5)), int(m.group(6))
+            head = f"{mo1}/{d1}–{mo2}/{d2}"
+            if y2 != y1:
+                head = f"{y1}/{mo1}/{d1}–{y2}/{mo2}/{d2}"
+        else:
+            head = f"{mo1}/{d1}"
+        # Compress common opening-hours phrasing
+        rest = re.sub(r"星期二至日", "二至日", rest)
+        rest = re.sub(r"上午\s*", "", rest)
+        rest = re.sub(r"晚上\s*", "", rest)
+        rest = re.sub(r"至", "–", rest, count=2)
+        if len(rest) > 36:
+            rest = rest[:33].rstrip("，,;；、 ") + "…"
+        return clean_text(f"{head} {rest}")[:60]
+
+    # ISO range already in date_text
+    m = re.fullmatch(r"(\d{4})-(\d{2})-(\d{2})\s*至\s*(\d{4})-(\d{2})-(\d{2})", s)
+    if m:
+        return f"{int(m.group(2))}/{int(m.group(3))}–{int(m.group(5))}/{int(m.group(6))}"
+    m = re.fullmatch(r"(\d{4})-(\d{2})-(\d{2})", s)
+    if m:
+        return f"{int(m.group(2))}/{int(m.group(3))}"
+
+    # Fallback: trim raw source text
+    if len(s) > 56:
+        s = s[:53].rstrip("，,;；、 ") + "…"
+    return s
+
+
+def enrich_budgets_from_source_pages(
+    events: list[dict[str, Any]],
+    session=None,
+    *,
+    max_fetches: int = 40,
+) -> dict[str, Any]:
+    """
+    Polite enrichment pass (capped detail fetches):
+    - Budget: if still 未知, extract admission text → parse_budget_from_text.
+    - Schedule: if date_text weak/empty, fill from explicit detail date/time only.
+    Soft-fails on 403/timeout. Never invents prices or times.
+    """
+    stats: dict[str, Any] = {
+        "candidates": 0,
+        "fetched": 0,
+        "unknown_to_priced": 0,
+        "unknown_to_free": 0,
+        "still_unknown": 0,
+        "schedule_filled": 0,
+        "errors": 0,
+        "skipped_cap": 0,
+        "samples_priced": [],
+        "samples_free": [],
+        "samples_schedule": [],
+    }
+    if not events:
+        return stats
+
+    def _is_unknown(ev: dict[str, Any]) -> bool:
+        if ev.get("budget_tag") is None:
+            return True
+        b = ev.get("budget")
+        return b in (None, "", "未知", "預算未知")
+
+    def _needs_schedule(ev: dict[str, Any]) -> bool:
+        if ev.get("evergreen"):
+            return False
+        return date_text_is_weak(ev.get("date_text"))
+
+    candidates = [
+        ev
+        for ev in events
+        if (ev.get("source_url") or "").startswith("http")
+        and "timable.com" not in (ev.get("source_url") or "")
+        and (_is_unknown(ev) or _needs_schedule(ev))
+    ]
+    stats["candidates"] = len(candidates)
+
+    for ev in candidates:
+        need_budget = _is_unknown(ev)
+        need_sched = _needs_schedule(ev)
+        if stats["fetched"] >= max_fetches:
+            stats["skipped_cap"] += 1
+            if need_budget:
+                stats["still_unknown"] += 1
+            continue
+        url = ev.get("source_url") or ""
+        try:
+            resp = polite_get(url, session=session, timeout=20)
+            stats["fetched"] += 1
+            html = resp.text
+
+            if need_sched:
+                sched = extract_schedule_text(html)
+                if sched and not date_text_is_weak(sched):
+                    ev["date_text"] = sched
+                    stats["schedule_filled"] += 1
+                    if len(stats["samples_schedule"]) < 6:
+                        stats["samples_schedule"].append(
+                            f"{(ev.get('title') or '')[:28]} → {sched[:40]}"
+                        )
+
+            if need_budget:
+                admission = extract_admission_text(html)
+                if not admission:
+                    stats["still_unknown"] += 1
+                    continue
+                display, tag = parse_budget_from_text(admission)
+                event_type = None
+                for tt in ev.get("tags") or []:
+                    if tt in TYPE:
+                        event_type = tt
+                        break
+                display, tag = force_free_for_type(event_type, display, tag, admission)
+                if display in ("未知", "預算未知") or tag is None:
+                    stats["still_unknown"] += 1
+                    continue
+                ev["budget"] = display
+                ev["budget_tag"] = tag
+                tags = [tt for tt in (ev.get("tags") or []) if tt not in BUDGET_TAGS]
+                if tag in BUDGET_TAGS:
+                    tags.append(tag)
+                ev["tags"] = tags
+                ev["display_tags"] = display_tags(tags, 2)
+                title = (ev.get("title") or "")[:40]
+                if tag == "免費":
+                    stats["unknown_to_free"] += 1
+                    if len(stats["samples_free"]) < 6:
+                        stats["samples_free"].append(title)
+                else:
+                    stats["unknown_to_priced"] += 1
+                    if len(stats["samples_priced"]) < 6:
+                        stats["samples_priced"].append(f"{title} → {display}/{tag}")
+            # if only schedule was needed and budget already known, fine
+        except Exception:
+            stats["errors"] += 1
+            if need_budget:
+                stats["still_unknown"] += 1
+    return stats
 
 
 def postprocess_events(events: list[dict[str, Any]]) -> list[dict[str, Any]]:

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-29T09:48:07+0800",
+  "updated_at": "2026-09-29T09:58:31+0800",
   "timezone": "Asia/Hong_Kong",
   "tag_taxonomy": {
     "type": [
@@ -72,7 +72,59 @@
       "start_date": "2026-10-17",
       "end_date": null,
       "source": "康文署／香港文化中心",
-      "source_url": "https://www.lcsd.gov.hk/tc/hkcc/programmes/audbuilding/freeculturalprogrammes.html"
+      "source_url": "https://www.lcsd.gov.hk/tc/hkcc/programmes/audbuilding/freeculturalprogrammes.html",
+      "evergreen": false
+    },
+    {
+      "id": "1507ed9eb5a2",
+      "title": "Marshall x Common Interest Pop-up Store",
+      "title_full": "Marshall x Common Interest Pop-up Store",
+      "location": "西營盤忠正街 2–4 號 Shop A(Common Interest / BinCoop)",
+      "budget": "免費",
+      "budget_tag": "免費",
+      "tags": [
+        "商場漫遊",
+        "戶外",
+        "夜晚",
+        "週末",
+        "行路多",
+        "免費"
+      ],
+      "display_tags": [
+        "商場漫遊",
+        "行路多"
+      ],
+      "date_text": "2026年9月10日至10月22日,下午 1:00 至 晚上 7:00(星期二至星期日,逢星期一休息)",
+      "start_date": "2026-09-10",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/",
+      "evergreen": false
+    },
+    {
+      "id": "5fd50974855a",
+      "title": "雷諾・卡普松小提琴演奏會",
+      "title_full": "雷諾・卡普松小提琴演奏會",
+      "location": "香港大會堂音樂廳",
+      "budget": "未知",
+      "budget_tag": null,
+      "tags": [
+        "表演",
+        "室內",
+        "夜晚",
+        "週末",
+        "坐低傾"
+      ],
+      "display_tags": [
+        "表演",
+        "坐低傾"
+      ],
+      "date_text": "2026 年 10 月 11 日 20:00 PM 星期日(1場)",
+      "start_date": "2026-10-11",
+      "end_date": null,
+      "source": "新假期",
+      "source_url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/",
+      "evergreen": false
     },
     {
       "id": "a8c3b068894e",
@@ -96,7 +148,8 @@
       "start_date": null,
       "end_date": null,
       "source": "康文署博物館（常設免費）",
-      "source_url": "https://hk.art.museum/tc/web/ma/home.html"
+      "source_url": "https://hk.art.museum/tc/web/ma/home.html",
+      "evergreen": true
     },
     {
       "id": "3c457a056dfd",
@@ -120,7 +173,8 @@
       "start_date": null,
       "end_date": null,
       "source": "康文署博物館（常設免費）",
-      "source_url": "https://hk.art.museum/tc/web/ma/home.html"
+      "source_url": "https://hk.art.museum/tc/web/ma/home.html",
+      "evergreen": true
     },
     {
       "id": "1d4a0d51d05a",
@@ -144,7 +198,8 @@
       "start_date": null,
       "end_date": null,
       "source": "康文署博物館（常設免費）",
-      "source_url": "https://hk.history.museum/"
+      "source_url": "https://hk.history.museum/",
+      "evergreen": true
     },
     {
       "id": "01ecb69d6744",
@@ -168,7 +223,8 @@
       "start_date": null,
       "end_date": null,
       "source": "康文署博物館（常設免費）",
-      "source_url": "https://hk.heritage.museum/"
+      "source_url": "https://hk.heritage.museum/",
+      "evergreen": true
     },
     {
       "id": "a8bd4334d05f",
@@ -192,7 +248,8 @@
       "start_date": null,
       "end_date": null,
       "source": "康文署博物館（常設免費）",
-      "source_url": "https://hk.drsunyatsen.museum/tc/web/sysm/home.html"
+      "source_url": "https://hk.drsunyatsen.museum/tc/web/sysm/home.html",
+      "evergreen": true
     },
     {
       "id": "d54f7e757a85",
@@ -216,7 +273,8 @@
       "start_date": null,
       "end_date": null,
       "source": "康文署博物館（常設免費）",
-      "source_url": "https://hk.waranddefence.museum/tc/web/mcd/home.html"
+      "source_url": "https://hk.waranddefence.museum/tc/web/mcd/home.html",
+      "evergreen": true
     },
     {
       "id": "3e1a5fa48f0e",
@@ -241,7 +299,8 @@
       "start_date": null,
       "end_date": null,
       "source": "康文署博物館（常設免費）",
-      "source_url": "https://www.lcsd.gov.hk/CE/CulturalService/HKFA/index.html"
+      "source_url": "https://www.lcsd.gov.hk/CE/CulturalService/HKFA/index.html",
+      "evergreen": true
     },
     {
       "id": "727f01ad9f54",
@@ -267,7 +326,8 @@
       "start_date": null,
       "end_date": null,
       "source": "康文署博物館（常設免費）",
-      "source_url": "https://hk.heritage.museum/"
+      "source_url": "https://hk.heritage.museum/",
+      "evergreen": true
     },
     {
       "id": "7cb1d89dfbb3",
@@ -293,7 +353,8 @@
       "start_date": null,
       "end_date": null,
       "source": "康文署博物館（常設免費）",
-      "source_url": "https://www.apo.hk/tc/web/apo/oi.html"
+      "source_url": "https://www.apo.hk/tc/web/apo/oi.html",
+      "evergreen": true
     },
     {
       "id": "3edbff235b08",
@@ -319,31 +380,34 @@
       "start_date": null,
       "end_date": null,
       "source": "康文署博物館（常設免費）",
-      "source_url": "https://www.lcsd.gov.hk/tc/facilities/facilitieslist/museums/lcsdmuseums.html"
+      "source_url": "https://www.lcsd.gov.hk/tc/facilities/facilitieslist/museums/lcsdmuseums.html",
+      "evergreen": true
     },
     {
       "id": "7e7500535596",
       "title": "飛奔到月球——38萬公里的旅行",
       "title_full": "「飛奔到月球——38萬公里的旅行」沉浸式太空展",
       "location": "九龍尖沙咀梳士巴利道18號K11 MUSEA 6樓室內展廳及戶外雕塑公園 九龍尖沙咀海濱星光大道指定區域 九龍尖沙咀梳士巴利道梳士巴利花園",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$175–200",
+      "budget_tag": "$100–300",
       "tags": [
         "展覽",
         "戶外",
         "安靜",
         "行路多",
-        "親子向"
+        "親子向",
+        "$100–300"
       ],
       "display_tags": [
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-10-02 至 2026-11-22",
+      "date_text": "2026年10月2日至11月22日 上午10:00至晚上9:00(每天開放)",
       "start_date": "2026-10-02",
       "end_date": "2026-11-22",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id87062.-%E9%A3%9B%E5%A5%94%E5%88%B0%E6%9C%88%E7%90%83-38%E8%90%AC%E5%85%AC%E9%87%8C%E7%9A%84%E6%97%85%E8%A1%8C-%E6%B2%89%E6%B5%B8%E5%BC%8F%E5%A4%AA%E7%A9%BA%E5%B1%95.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id87062.-%E9%A3%9B%E5%A5%94%E5%88%B0%E6%9C%88%E7%90%83-38%E8%90%AC%E5%85%AC%E9%87%8C%E7%9A%84%E6%97%85%E8%A1%8C-%E6%B2%89%E6%B5%B8%E5%BC%8F%E5%A4%AA%E7%A9%BA%E5%B1%95.html",
+      "evergreen": false
     },
     {
       "id": "f37c14ba7aa5",
@@ -362,11 +426,12 @@
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-10-01 至 2026-12-31",
+      "date_text": "參觀、導賞團及開篷巴士古蹟遊:11月1日至12月31日; 巡迴展覽及活動:10月1日至12月31日 不同時間 詳情請瀏覽盛事網站",
       "start_date": "2026-10-01",
       "end_date": "2026-12-31",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88562.2026%E5%8F%A4%E8%B9%9F%E5%91%A8%E9%81%8A%E6%A8%82%E6%9A%A8%E5%B7%A1%E8%BF%B4%E5%B1%95%E8%A6%BD.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88562.2026%E5%8F%A4%E8%B9%9F%E5%91%A8%E9%81%8A%E6%A8%82%E6%9A%A8%E5%B7%A1%E8%BF%B4%E5%B1%95%E8%A6%BD.html",
+      "evergreen": false
     },
     {
       "id": "30adcf9f2b12",
@@ -384,33 +449,36 @@
         "商場漫遊",
         "室內"
       ],
-      "date_text": "2026-09-26 至 2026-10-04",
+      "date_text": "9月26–27日及10月1、3–4日 中午12時至晚上7時",
       "start_date": "2026-09-26",
       "end_date": "2026-10-04",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.thewhampoa.com//list/detail-917.html"
+      "source_url": "https://www.thewhampoa.com//list/detail-917.html",
+      "evergreen": false
     },
     {
       "id": "cfff260919a5",
       "title": "安妮.伊姆霍夫:天鵝社",
       "title_full": "安妮.伊姆霍夫:天鵝社",
       "location": "香港島中環荷李活道10號大館賽馬會藝方",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$50",
+      "budget_tag": "$100內",
       "tags": [
         "展覽",
         "戶外",
-        "安靜"
+        "安靜",
+        "$100內"
       ],
       "display_tags": [
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-09-25 至 2027-01-03",
+      "date_text": "2026年9月25日至2027年1月3日 星期二至日上午11:00至晚上7:00; 星期一閉館(公眾假期照常開放,延至翌日閉館 )",
       "start_date": "2026-09-25",
       "end_date": "2027-01-03",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89642.%E5%AE%89%E5%A6%AE-%E4%BC%8A%E5%A7%86%E9%9C%8D%E5%A4%AB-%E5%A4%A9%E9%B5%9D%E7%A4%BE.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89642.%E5%AE%89%E5%A6%AE-%E4%BC%8A%E5%A7%86%E9%9C%8D%E5%A4%AB-%E5%A4%A9%E9%B5%9D%E7%A4%BE.html",
+      "evergreen": false
     },
     {
       "id": "4045a280bccb",
@@ -432,7 +500,8 @@
       "start_date": "2027-02-06",
       "end_date": "2027-02-06",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/chinese-new-year.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/chinese-new-year.html",
+      "evergreen": false
     },
     {
       "id": "d630e24b157b",
@@ -451,117 +520,128 @@
       "start_date": "2026-12-31",
       "end_date": "2027-01-01",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/what-s-new/events/new-year-countdown.html"
+      "source_url": "https://www.discoverhongkong.com/tc/what-s-new/events/new-year-countdown.html",
+      "evergreen": false
     },
     {
       "id": "40e357a111da",
       "title": "第60屆工展會",
       "title_full": "第60屆工展會",
       "location": "香港島銅鑼灣興發街1號維多利亞公園",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$10",
+      "budget_tag": "$100內",
       "tags": [
         "展覽",
         "戶外",
         "安靜",
-        "行路多"
+        "行路多",
+        "$100內"
       ],
       "display_tags": [
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-12-12 至 2027-01-04",
+      "date_text": "2026年12月12日至2027年1月4日 2026年12月12日至2027年1月3日上午11:00至晚上9:00; 2027年1月4日上午11:00至晚上8:00",
       "start_date": "2026-12-12",
       "end_date": "2027-01-04",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88983.%E7%AC%AC60%E5%B1%86%E5%B7%A5%E5%B1%95%E6%9C%83.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88983.%E7%AC%AC60%E5%B1%86%E5%B7%A5%E5%B1%95%E6%9C%83.html",
+      "evergreen": false
     },
     {
       "id": "8e8e10128783",
       "title": "Amazing Toy Show 2026",
       "title_full": "Amazing Toy Show 2026",
       "location": "香港島灣仔博覽道1號香港會議展覽中心Hall 3",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$30–50",
+      "budget_tag": "$100內",
       "tags": [
         "展覽",
-        "安靜"
+        "安靜",
+        "$100內"
       ],
       "display_tags": [
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-12-11 至 2026-12-13",
+      "date_text": "2026年12月11日至13日 中午12:00至晚上8:00",
       "start_date": "2026-12-11",
       "end_date": "2026-12-13",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89983.amazing-toy-show-2026-.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89983.amazing-toy-show-2026-.html",
+      "evergreen": false
     },
     {
       "id": "c1fcaed749e3",
       "title": "雲光萬里──絲綢之路的文化交流與佛教藝術(暫名)",
       "title_full": "雲光萬里──絲綢之路的文化交流與佛教藝術(暫名)",
       "location": "香港故宮文化博物館展廳8",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$150–180",
+      "budget_tag": "$100–300",
       "tags": [
         "展覽",
         "室內",
-        "安靜"
+        "安靜",
+        "$100–300"
       ],
       "display_tags": [
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-12-09 至 2027-04-26",
+      "date_text": "2026年12月9日至2027年4月26日 星期一、三、四及日:上午10:00至下午6:00; 星期五、六及公眾假期:上午10:00至晚上8:00; 星期二 (公眾假期除外)、農曆年初一及年初二休館",
       "start_date": "2026-12-09",
       "end_date": "2027-04-26",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85824.%E9%9B%B2%E5%85%89%E8%90%AC%E9%87%8C-%E7%B5%B2%E7%B6%A2%E4%B9%8B%E8%B7%AF%E7%9A%84%E6%96%87%E5%8C%96%E4%BA%A4%E6%B5%81%E8%88%87%E4%BD%9B%E6%95%99%E8%97%9D%E8%A1%93-%E6%9A%AB%E5%90%8D-.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85824.%E9%9B%B2%E5%85%89%E8%90%AC%E9%87%8C-%E7%B5%B2%E7%B6%A2%E4%B9%8B%E8%B7%AF%E7%9A%84%E6%96%87%E5%8C%96%E4%BA%A4%E6%B5%81%E8%88%87%E4%BD%9B%E6%95%99%E8%97%9D%E8%A1%93-%E6%9A%AB%E5%90%8D-.html",
+      "evergreen": false
     },
     {
       "id": "bf5916ef09a8",
       "title": "亞裔藝采+ 2026",
       "title_full": "亞裔藝采+ 2026",
       "location": "九龍尖沙咀梳士巴利道10號香港文化中心大堂及露天廣場",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "展覽",
         "戶外",
-        "熱鬧"
+        "熱鬧",
+        "免費"
       ],
       "display_tags": [
         "展覽",
         "熱鬧"
       ],
-      "date_text": "2026-11-22 至 2026-11-29",
+      "date_text": "戶外嘉年華:2026年11月22日; 展覽:2026年11月22日至29日 戶外嘉年華 :11月22日下午2:00至6:00; 展覽:11月22日下午2:00至晚上11:00; 11月23日至28日上午9:00至晚上11:00; 11月29日上午9:00至下午5:00",
       "start_date": "2026-11-22",
       "end_date": "2026-11-29",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89682.%E4%BA%9E%E8%A3%94%E8%97%9D%E9%87%87-2026.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89682.%E4%BA%9E%E8%A3%94%E8%97%9D%E9%87%87-2026.html",
+      "evergreen": false
     },
     {
       "id": "d4f1736cf324",
       "title": "創意設計博覽",
       "title_full": "創意設計博覽",
       "location": "香港島灣仔博覽道1號香港會議展覽中心展覽廳3",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "展覽",
         "室內",
-        "安靜"
+        "安靜",
+        "免費"
       ],
       "display_tags": [
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-11-18 至 2026-11-21",
+      "date_text": "2026年11月18日至21日 2026年11月18日下午2:00至晚上7:00(貴賓預展 - 只限獲邀人士參觀) 2026年11月19日至20日上午9:30至晚上7:30 2026年11月21日上午9:30至晚上7:00",
       "start_date": "2026-11-18",
       "end_date": "2026-11-21",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88624.%E5%89%B5%E6%84%8F%E8%A8%AD%E8%A8%88%E5%8D%9A%E8%A6%BD.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88624.%E5%89%B5%E6%84%8F%E8%A8%AD%E8%A8%88%E5%8D%9A%E8%A6%BD.html",
+      "evergreen": false
     },
     {
       "id": "6a1ac99c9b10",
@@ -578,54 +658,59 @@
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-11-16 至 2026-11-21",
+      "date_text": "2026年11月16日至21日 不同時間(有待公布,詳情請瀏覽活動網站)",
       "start_date": "2026-11-16",
       "end_date": "2026-11-21",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88502.%E8%A8%AD%E8%A8%88%E7%87%9F%E5%95%86%E5%91%A8.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88502.%E8%A8%AD%E8%A8%88%E7%87%9F%E5%95%86%E5%91%A8.html",
+      "evergreen": false
     },
     {
       "id": "49e0b335321f",
       "title": "「港樂・星夜・交響曲」",
       "title_full": "「港樂・星夜・交響曲」",
       "location": "香港島中環龍和道9號中環海濱活動空間",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "表演",
         "戶外",
         "夜晚",
         "熱鬧",
-        "行路多"
+        "行路多",
+        "免費"
       ],
       "display_tags": [
         "表演",
         "熱鬧"
       ],
-      "date_text": "2026-11-13",
+      "date_text": "2026年11月13日 晚上7:30",
       "start_date": "2026-11-13",
       "end_date": "2026-11-13",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89762.-%E6%B8%AF%E6%A8%82-%E6%98%9F%E5%A4%9C-%E4%BA%A4%E9%9F%BF%E6%9B%B2-.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89762.-%E6%B8%AF%E6%A8%82-%E6%98%9F%E5%A4%9C-%E4%BA%A4%E9%9F%BF%E6%9B%B2-.html",
+      "evergreen": false
     },
     {
       "id": "38eb05e72159",
       "title": "設計@HKG",
       "title_full": "設計@HKG",
       "location": "不同地點(有待公布,詳情請瀏覽活動網站)",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
-        "展覽"
+        "展覽",
+        "免費"
       ],
       "display_tags": [
         "展覽"
       ],
-      "date_text": "2026-11-10 至 2026-11-24",
+      "date_text": "2026年11月10日至24日 不同時間(有待公布,詳情請瀏覽活動網站)",
       "start_date": "2026-11-10",
       "end_date": "2026-11-24",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id90002.%E8%A8%AD%E8%A8%88-hkg.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id90002.%E8%A8%AD%E8%A8%88-hkg.html",
+      "evergreen": false
     },
     {
       "id": "b12d03b9a899",
@@ -647,7 +732,8 @@
       "start_date": "2026-11-01",
       "end_date": "2027-01-03",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/what-s-new/events/hong-kong-winterfest.html"
+      "source_url": "https://www.discoverhongkong.com/tc/what-s-new/events/hong-kong-winterfest.html",
+      "evergreen": false
     },
     {
       "id": "84b529456300",
@@ -667,11 +753,12 @@
         "市集",
         "行路多"
       ],
-      "date_text": "2026-11-01",
+      "date_text": "2026年11月1日 上午10:00至晚上9:30",
       "start_date": "2026-11-01",
       "end_date": "2026-11-01",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89842.%E7%AC%AC20%E5%B1%86%E5%A4%A7%E8%A7%92%E5%92%80%E5%BB%9F%E6%9C%83.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89842.%E7%AC%AC20%E5%B1%86%E5%A4%A7%E8%A7%92%E5%92%80%E5%BB%9F%E6%9C%83.html",
+      "evergreen": false
     },
     {
       "id": "2d0bfdbb4912",
@@ -691,187 +778,204 @@
         "表演",
         "熱鬧"
       ],
-      "date_text": "2026-10-31",
+      "date_text": "2026年10月31日 音樂節:下午4:00至晚上10:30; 餘興派對:晚上11:00至早上4:00",
       "start_date": "2026-10-31",
       "end_date": "2026-10-31",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89922.evoke%E9%9F%B3%E6%A8%82%E7%AF%80.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89922.evoke%E9%9F%B3%E6%A8%82%E7%AF%80.html",
+      "evergreen": false
     },
     {
       "id": "3f931ff1a70c",
       "title": "亞藝無疆",
       "title_full": "《阿薩德二重奏結他演奏會》|「亞藝無疆」藝術節2026",
       "location": "香港島中環愛丁堡廣場5號香港大會堂音樂廳",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$200–420",
+      "budget_tag": "$100–300",
       "tags": [
         "表演",
         "室內",
         "熱鬧",
-        "坐低傾"
+        "坐低傾",
+        "$100–300"
       ],
       "display_tags": [
         "表演",
         "熱鬧"
       ],
-      "date_text": "2026-10-30",
+      "date_text": "2026年10月30日 晚上8:00",
       "start_date": "2026-10-30",
       "end_date": "2026-10-30",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89703.-%E9%98%BF%E8%96%A9%E5%BE%B7%E4%BA%8C%E9%87%8D%E5%A5%8F%E7%B5%90%E4%BB%96%E6%BC%94%E5%A5%8F%E6%9C%83-%E4%BA%9E%E8%97%9D%E7%84%A1%E7%96%86-%E8%97%9D%E8%A1%93%E7%AF%802026.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89703.-%E9%98%BF%E8%96%A9%E5%BE%B7%E4%BA%8C%E9%87%8D%E5%A5%8F%E7%B5%90%E4%BB%96%E6%BC%94%E5%A5%8F%E6%9C%83-%E4%BA%9E%E8%97%9D%E7%84%A1%E7%96%86-%E8%97%9D%E8%A1%93%E7%AF%802026.html",
+      "evergreen": false
     },
     {
       "id": "9b64870ed4c7",
       "title": "天國之窗──特列季亞科夫美術館宗教藝術珍藏(暫名)",
       "title_full": "天國之窗──特列季亞科夫美術館宗教藝術珍藏(暫名)",
       "location": "香港故宮文化博物館展廳9",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$150–180",
+      "budget_tag": "$100–300",
       "tags": [
         "展覽",
         "室內",
-        "安靜"
+        "安靜",
+        "$100–300"
       ],
       "display_tags": [
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-10-21 至 2027-03-26",
+      "date_text": "2026年10月21日至2027年3月26日 星期一、三、四及日:上午10:00至下午6:00; 星期五、六及公眾假期:上午10:00至晚上8:00; 星期二 (公眾假期除外)、農曆年初一及年初二休館",
       "start_date": "2026-10-21",
       "end_date": "2027-03-26",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85786.%E5%A4%A9%E5%9C%8B%E4%B9%8B%E7%AA%97-%E7%89%B9%E5%88%97%E5%AD%A3%E4%BA%9E%E7%A7%91%E5%A4%AB%E7%BE%8E%E8%A1%93%E9%A4%A8%E5%AE%97%E6%95%99%E8%97%9D%E8%A1%93%E7%8F%8D%E8%97%8F-%E6%9A%AB%E5%90%8D-.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85786.%E5%A4%A9%E5%9C%8B%E4%B9%8B%E7%AA%97-%E7%89%B9%E5%88%97%E5%AD%A3%E4%BA%9E%E7%A7%91%E5%A4%AB%E7%BE%8E%E8%A1%93%E9%A4%A8%E5%AE%97%E6%95%99%E8%97%9D%E8%A1%93%E7%8F%8D%E8%97%8F-%E6%9A%AB%E5%90%8D-.html",
+      "evergreen": false
     },
     {
       "id": "88b877213019",
       "title": "神話、怪獸與漫畫:亞洲的奇幻異境",
       "title_full": "神話、怪獸與漫畫:亞洲的奇幻異境",
       "location": "西九文化區M+西展廳",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$190",
+      "budget_tag": "$100–300",
       "tags": [
         "展覽",
         "室內",
-        "安靜"
+        "安靜",
+        "$100–300"
       ],
       "display_tags": [
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-10-17 至 2027-04-04",
+      "date_text": "2026年10月17日至2027年4月4日 星期二至四及六至日上午10:00至下午6:00; 星期五上午10:00至晚上10:00; 星期一閉館 ***暑假期間延長星期六開放時間*** 星期六上午10:00至晚上8:00 (2026年7月...",
       "start_date": "2026-10-17",
       "end_date": "2027-04-04",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85883.%E7%A5%9E%E8%A9%B1-%E6%80%AA%E7%8D%B8%E8%88%87%E6%BC%AB%E7%95%AB-%E4%BA%9E%E6%B4%B2%E7%9A%84%E5%A5%87%E5%B9%BB%E7%95%B0%E5%A2%83.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85883.%E7%A5%9E%E8%A9%B1-%E6%80%AA%E7%8D%B8%E8%88%87%E6%BC%AB%E7%95%AB-%E4%BA%9E%E6%B4%B2%E7%9A%84%E5%A5%87%E5%B9%BB%E7%95%B0%E5%A2%83.html",
+      "evergreen": false
     },
     {
       "id": "49cf6646c4a4",
       "title": "《敦煌:溯光行》",
       "title_full": "《敦煌:溯光行》",
       "location": "九龍尖沙咀梳士巴利道10號香港文化中心大劇院",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$280–1380",
+      "budget_tag": "$100–300",
       "tags": [
         "表演",
         "室內",
-        "安靜"
+        "安靜",
+        "$100–300"
       ],
       "display_tags": [
         "表演",
         "安靜"
       ],
-      "date_text": "2026-10-16 至 2026-10-18",
+      "date_text": "2026年10月16日至18日 10月16日至18日晚上7:30; 10月17日至18日下午2:30",
       "start_date": "2026-10-16",
       "end_date": "2026-10-18",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88963.-%E6%95%A6%E7%85%8C-%E6%BA%AF%E5%85%89%E8%A1%8C-.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88963.-%E6%95%A6%E7%85%8C-%E6%BA%AF%E5%85%89%E8%A1%8C-.html",
+      "evergreen": false
     },
     {
       "id": "a3bd8d829fcf",
       "title": "香港演藝博覽2026",
       "title_full": "香港演藝博覽2026",
       "location": "不同地點",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$390–3900",
+      "budget_tag": "$300–600",
       "tags": [
         "展覽",
         "熱鬧",
-        "坐低傾"
+        "坐低傾",
+        "$300–600"
       ],
       "display_tags": [
         "展覽",
         "熱鬧"
       ],
-      "date_text": "2026-10-09 至 2026-10-13",
+      "date_text": "2026年10月9日至13日 香港演藝博覽正式開幕前,將於2026年10月6日至9日,舉辦一連四天的序幕節目,為公眾提供免費表演,與民同樂。 每日節目安排各異,活動環節於早上至晚間不同時段進行。",
       "start_date": "2026-10-09",
       "end_date": "2026-10-13",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86703.%E9%A6%99%E6%B8%AF%E6%BC%94%E8%97%9D%E5%8D%9A%E8%A6%BD2026.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86703.%E9%A6%99%E6%B8%AF%E6%BC%94%E8%97%9D%E5%8D%9A%E8%A6%BD2026.html",
+      "evergreen": false
     },
     {
       "id": "1aab1e054a8f",
       "title": "馬斯卡尼《鄉村騎士》及列卡華洛《丑角》",
       "title_full": "馬斯卡尼《鄉村騎士》及列卡華洛《丑角》",
       "location": "九龍尖沙咀梳士巴利道10號香港文化中心大劇院",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$280–1280",
+      "budget_tag": "$100–300",
       "tags": [
         "表演",
-        "室內"
+        "室內",
+        "$100–300"
       ],
       "display_tags": [
         "表演",
         "室內"
       ],
-      "date_text": "2026-10-08 至 2026-10-11",
+      "date_text": "2026年10月8日至11日 10月8日至10日晚上7:30; 10月11日下午2:30",
       "start_date": "2026-10-08",
       "end_date": "2026-10-11",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88762.%E9%A6%AC%E6%96%AF%E5%8D%A1%E5%B0%BC-%E9%84%89%E6%9D%91%E9%A8%8E%E5%A3%AB-%E5%8F%8A%E5%88%97%E5%8D%A1%E8%8F%AF%E6%B4%9B-%E4%B8%91%E8%A7%92-.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88762.%E9%A6%AC%E6%96%AF%E5%8D%A1%E5%B0%BC-%E9%84%89%E6%9D%91%E9%A8%8E%E5%A3%AB-%E5%8F%8A%E5%88%97%E5%8D%A1%E8%8F%AF%E6%B4%9B-%E4%B8%91%E8%A7%92-.html",
+      "evergreen": false
     },
     {
       "id": "5b5b98085544",
       "title": "「亞運」主題大型動感燈光展",
       "title_full": "「亞運」主題大型動感燈光展",
       "location": "九龍啟德承啟道38號啟德體育園啟德主場館",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "展覽",
         "室內",
         "夜晚",
-        "大型公演"
+        "大型公演",
+        "免費"
       ],
       "display_tags": [
         "展覽",
         "夜晚"
       ],
-      "date_text": "2026-09-21 至 2026-10-24",
+      "date_text": "晚上8:00至8:30",
       "start_date": "2026-09-21",
       "end_date": "2026-10-24",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89982.-%E4%BA%9E%E9%81%8B-%E4%B8%BB%E9%A1%8C%E5%A4%A7%E5%9E%8B%E5%8B%95%E6%84%9F%E7%87%88%E5%85%89%E5%B1%95.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89982.-%E4%BA%9E%E9%81%8B-%E4%B8%BB%E9%A1%8C%E5%A4%A7%E5%9E%8B%E5%8B%95%E6%84%9F%E7%87%88%E5%85%89%E5%B1%95.html",
+      "evergreen": false
     },
     {
       "id": "d2695e823a8b",
       "title": "《現代豪俠「轉」》",
       "title_full": "《現代豪俠「轉」》",
       "location": "香港島中環愛丁堡廣場5號香港大會堂劇院",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$240–450",
+      "budget_tag": "$100–300",
       "tags": [
         "表演",
-        "戶外"
+        "戶外",
+        "$100–300"
       ],
       "display_tags": [
         "表演",
         "戶外"
       ],
-      "date_text": "2026-09-19 至 2026-10-04",
+      "date_text": "2026年9月19日至10月4日 9月19日、22日至24日、26日、29日至30日及10月2日至3日晚上7:45; 9月20日、26日至27日及10月1日、3日至4日下午2:45",
       "start_date": "2026-09-19",
       "end_date": "2026-10-04",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88822.-%E7%8F%BE%E4%BB%A3%E8%B1%AA%E4%BF%A0-%E8%BD%89-.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88822.-%E7%8F%BE%E4%BB%A3%E8%B1%AA%E4%BF%A0-%E8%BD%89-.html",
+      "evergreen": false
     },
     {
       "id": "a3011c2e45e3",
@@ -893,51 +997,56 @@
       "start_date": "2026-09-18",
       "end_date": "2026-11-01",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89522.%E6%83%A1%E4%BA%BAbe-like-%E5%8F%8D%E8%BD%89%E8%BF%AA%E5%A3%AB%E5%B0%BC.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89522.%E6%83%A1%E4%BA%BAbe-like-%E5%8F%8D%E8%BD%89%E8%BF%AA%E5%A3%AB%E5%B0%BC.html",
+      "evergreen": false
     },
     {
       "id": "63949fe89266",
       "title": "丙午年中秋綵燈會",
       "title_full": "丙午年中秋綵燈會",
       "location": "中秋綵燈會: 維多利亞公園: 中秋光影裝置:香港文化中心露天廣場",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "夜景散步",
-        "戶外"
+        "戶外",
+        "免費"
       ],
       "display_tags": [
         "夜景散步",
         "戶外"
       ],
-      "date_text": "2026-09-17 至 2026-10-11",
+      "date_text": "中秋綵燈會:2026年9月17日至10月4日; 中秋光影裝置:2026年9月17日至10月11日 亮燈時間:下午6:30至晚上11:00 *9月24日至27日將延長亮燈時間至凌晨12時",
       "start_date": "2026-09-17",
       "end_date": "2026-10-11",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86624.%E4%B8%99%E5%8D%88%E5%B9%B4%E4%B8%AD%E7%A7%8B%E7%B6%B5%E7%87%88%E6%9C%83.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86624.%E4%B8%99%E5%8D%88%E5%B9%B4%E4%B8%AD%E7%A7%8B%E7%B6%B5%E7%87%88%E6%9C%83.html",
+      "evergreen": false
     },
     {
       "id": "d283be553e53",
       "title": "嶼月高昇‧處處是景",
       "title_full": "「嶼月高昇‧處處是景」東涌海濱花燈節2026",
       "location": "離島東涌海濱路 東涌東海濱長廊及東涌東海濱長廊2.0",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "夜景散步",
         "戶外",
         "熱鬧",
-        "行路多"
+        "行路多",
+        "免費"
       ],
       "display_tags": [
         "夜景散步",
         "熱鬧"
       ],
-      "date_text": "2026-09-17 至 2026-10-05",
+      "date_text": "2026年9月17日至10月5日 東湧東海濱長廊:晚上6:00至10:00 *9月25日至27日將延長亮燈時間至凌晨12:00 東湧東海濱長廊 2.0:晚上6:00至凌晨12:00 *9月25日至27日將亮燈時間延長至凌晨2:00",
       "start_date": "2026-09-17",
       "end_date": "2026-10-05",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89022.-%E5%B6%BC%E6%9C%88%E9%AB%98%E6%98%87-%E8%99%95%E8%99%95%E6%98%AF%E6%99%AF-%E6%9D%B1%E6%B6%8C%E6%B5%B7%E6%BF%B1%E8%8A%B1%E7%87%88%E7%AF%802026.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89022.-%E5%B6%BC%E6%9C%88%E9%AB%98%E6%98%87-%E8%99%95%E8%99%95%E6%98%AF%E6%99%AF-%E6%9D%B1%E6%B6%8C%E6%B5%B7%E6%BF%B1%E8%8A%B1%E7%87%88%E7%AF%802026.html",
+      "evergreen": false
     },
     {
       "id": "04c29a328f7b",
@@ -955,34 +1064,37 @@
         "商場漫遊",
         "室內"
       ],
-      "date_text": "2026-09-16 至 2026-11-01",
+      "date_text": "即日起至11月1日 活動 11am - 11pm 活動",
       "start_date": "2026-09-16",
       "end_date": "2026-11-01",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.hkapm.com.hk/whatshot/detail/?u=6PxGmWKW2tA"
+      "source_url": "https://www.hkapm.com.hk/whatshot/detail/?u=6PxGmWKW2tA",
+      "evergreen": false
     },
     {
       "id": "57c68fc34ce7",
       "title": "繼續寵愛.張國榮70誕辰.紀念展",
       "title_full": "繼續寵愛.張國榮70誕辰.紀念展",
       "location": "新界沙田文林路1號香港文化博物館1樓專題展覽館五",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "展覽",
         "室內",
         "安靜",
-        "坐低傾"
+        "坐低傾",
+        "免費"
       ],
       "display_tags": [
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-09-09 至 2027-05-10",
+      "date_text": "2026年9月9日至2027年5月10日 星期一、三至五上午10:00至下午6:00; 星期六、日及公眾假期上午10:00至晚上7:00; 聖誕節前夕及農曆新年除夕上午10:00至下午5:00; 星期二(公眾假期除外)、農曆年初一及初二休館",
       "start_date": "2026-09-09",
       "end_date": "2027-05-10",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89023.%E7%B9%BC%E7%BA%8C%E5%AF%B5%E6%84%9B-%E5%BC%B5%E5%9C%8B%E6%A6%AE70%E8%AA%95%E8%BE%B0-%E7%B4%80%E5%BF%B5%E5%B1%95.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id89023.%E7%B9%BC%E7%BA%8C%E5%AF%B5%E6%84%9B-%E5%BC%B5%E5%9C%8B%E6%A6%AE70%E8%AA%95%E8%BE%B0-%E7%B4%80%E5%BF%B5%E5%B1%95.html",
+      "evergreen": false
     },
     {
       "id": "9a52f55d728d",
@@ -1005,7 +1117,8 @@
       "start_date": "2026-09-05",
       "end_date": "2026-11-01",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88942.%E6%B5%B7%E6%B4%8B%E5%85%AC%E5%9C%92%E5%93%88%E5%9B%89%E5%96%82%E5%85%A8%E5%9C%92%E7%A5%AD2026.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88942.%E6%B5%B7%E6%B4%8B%E5%85%AC%E5%9C%92%E5%93%88%E5%9B%89%E5%96%82%E5%85%A8%E5%9C%92%E7%A5%AD2026.html",
+      "evergreen": false
     },
     {
       "id": "a2021e0d22a1",
@@ -1028,7 +1141,8 @@
       "start_date": "2026-09-03",
       "end_date": "2026-10-19",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.leetungavenue.com.hk/tc/happenings/detail/%E5%BD%A9%E7%87%88%EF%BC%8E%E8%BF%8E%E6%9C%88/"
+      "source_url": "https://www.leetungavenue.com.hk/tc/happenings/detail/%E5%BD%A9%E7%87%88%EF%BC%8E%E8%BF%8E%E6%9C%88/",
+      "evergreen": false
     },
     {
       "id": "205bfceb766f",
@@ -1051,7 +1165,8 @@
       "start_date": "2026-08-21",
       "end_date": "2027-12-31",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88882.%E5%95%9F%E5%BE%B7%E8%97%9D%E8%A1%93%E6%96%B0%E5%9C%B0%E6%A8%99-%E8%8D%89%E9%96%93%E5%BD%8C%E7%94%9F%E7%B6%93%E5%85%B8-%E5%8D%97%E7%93%9C-.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88882.%E5%95%9F%E5%BE%B7%E8%97%9D%E8%A1%93%E6%96%B0%E5%9C%B0%E6%A8%99-%E8%8D%89%E9%96%93%E5%BD%8C%E7%94%9F%E7%B6%93%E5%85%B8-%E5%8D%97%E7%93%9C-.html",
+      "evergreen": false
     },
     {
       "id": "e9b764a80124",
@@ -1074,30 +1189,33 @@
       "start_date": "2026-08-17",
       "end_date": "2026-10-04",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88982.project-c-x-megabox%E5%A4%A7%E5%9E%8B%E7%A4%BE%E5%8D%80%E8%97%9D%E8%A1%93%E8%A3%9D%E7%BD%AE%E4%BC%81%E5%8A%83.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88982.project-c-x-megabox%E5%A4%A7%E5%9E%8B%E7%A4%BE%E5%8D%80%E8%97%9D%E8%A1%93%E8%A3%9D%E7%BD%AE%E4%BC%81%E5%8A%83.html",
+      "evergreen": false
     },
     {
       "id": "57089414ae86",
       "title": "隱/現:為記憶而設",
       "title_full": "隱/現:為記憶而設",
       "location": "九龍深水埗通州街280號DX設計館2樓設計博物館",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "展覽",
         "戶外",
         "安靜",
-        "行路多"
+        "行路多",
+        "免費"
       ],
       "display_tags": [
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-07-29 至 2026-11-02",
+      "date_text": "2026年7月29日至11月2日 星期一、三至日上午11:00至晚上7:00; 星期二休館(公眾假期除外)",
       "start_date": "2026-07-29",
       "end_date": "2026-11-02",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88842.%E9%9A%B1-%E7%8F%BE-%E7%82%BA%E8%A8%98%E6%86%B6%E8%80%8C%E8%A8%AD.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88842.%E9%9A%B1-%E7%8F%BE-%E7%82%BA%E8%A8%98%E6%86%B6%E8%80%8C%E8%A8%AD.html",
+      "evergreen": false
     },
     {
       "id": "77ece6245c93",
@@ -1120,33 +1238,36 @@
         "市集",
         "熱鬧"
       ],
-      "date_text": "2026-07-24 至 2026-10-11",
+      "date_text": "2026年7月24日至10月11日",
       "start_date": "2026-07-24",
       "end_date": "2026-10-11",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86742.%E6%98%82%E5%9D%AA360-20%E5%91%A8%E5%B9%B4%E6%85%B6%E7%A5%9D%E6%B4%BB%E5%8B%95.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86742.%E6%98%82%E5%9D%AA360-20%E5%91%A8%E5%B9%B4%E6%85%B6%E7%A5%9D%E6%B4%BB%E5%8B%95.html",
+      "evergreen": false
     },
     {
       "id": "3e2a0aa2df67",
       "title": "筆歌墨舞:唐家偉的藝術",
       "title_full": "筆歌墨舞:唐家偉的藝術",
       "location": "香港島金鐘正義道9號亞洲協會香港中心麥禮賢夫人藝術館",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "展覽",
         "室內",
-        "安靜"
+        "安靜",
+        "免費"
       ],
       "display_tags": [
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-07-15 至 2026-10-11",
+      "date_text": "2026年7月15日至10月11日 星期二至日上午11:00至下午6:00",
       "start_date": "2026-07-15",
       "end_date": "2026-10-11",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88202.%E7%AD%86%E6%AD%8C%E5%A2%A8%E8%88%9E-%E5%94%90%E5%AE%B6%E5%81%89%E7%9A%84%E8%97%9D%E8%A1%93.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88202.%E7%AD%86%E6%AD%8C%E5%A2%A8%E8%88%9E-%E5%94%90%E5%AE%B6%E5%81%89%E7%9A%84%E8%97%9D%E8%A1%93.html",
+      "evergreen": false
     },
     {
       "id": "135188a545e9",
@@ -1169,42 +1290,46 @@
       "start_date": "2026-07-04",
       "end_date": "2026-10-19",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.fortunemalls.com.hk/tc/events/7/1"
+      "source_url": "https://www.fortunemalls.com.hk/tc/events/7/1",
+      "evergreen": false
     },
     {
       "id": "afb707523d69",
       "title": "設計啊!感受日常設計之奇妙",
       "title_full": "設計啊!感受日常設計之奇妙",
       "location": "西九文化區M+地下大堂展廳",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$190",
+      "budget_tag": "$100–300",
       "tags": [
         "展覽",
         "室內",
-        "安靜"
+        "安靜",
+        "$100–300"
       ],
       "display_tags": [
         "展覽",
         "安靜"
       ],
-      "date_text": "2026-06-27 至 2027-01-10",
+      "date_text": "2026年6月27日至2027年1月10日 星期二至四及六至日上午10:00至下午6:00; 星期五上午10:00至晚上10:00; 星期一閉館 ***暑假期間延長星期六開放時間*** 星期六上午10:00至晚上8:00 (2026年7月...",
       "start_date": "2026-06-27",
       "end_date": "2027-01-10",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85902.%E8%A8%AD%E8%A8%88%E5%95%8A-%E6%84%9F%E5%8F%97%E6%97%A5%E5%B8%B8%E8%A8%AD%E8%A8%88%E4%B9%8B%E5%A5%87%E5%A6%99.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85902.%E8%A8%AD%E8%A8%88%E5%95%8A-%E6%84%9F%E5%8F%97%E6%97%A5%E5%B8%B8%E8%A8%AD%E8%A8%88%E4%B9%8B%E5%A5%87%E5%A6%99.html",
+      "evergreen": false
     },
     {
       "id": "312a291b9a3f",
       "title": "拍住上——光影裡並肩馳騁的我們",
       "title_full": "拍住上——光影裡並肩馳騁的我們",
       "location": "香港島中環荷李活道10號大館01座複式展室",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$30",
+      "budget_tag": "$100內",
       "tags": [
         "展覽",
         "室內",
         "安靜",
-        "坐低傾"
+        "坐低傾",
+        "$100內"
       ],
       "display_tags": [
         "展覽",
@@ -1214,7 +1339,8 @@
       "start_date": "2026-06-23",
       "end_date": "2026-10-04",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86942.%E6%8B%8D%E4%BD%8F%E4%B8%8A-%E5%85%89%E5%BD%B1%E8%A3%A1%E4%B8%A6%E8%82%A9%E9%A6%B3%E9%A8%81%E7%9A%84%E6%88%91%E5%80%91.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86942.%E6%8B%8D%E4%BD%8F%E4%B8%8A-%E5%85%89%E5%BD%B1%E8%A3%A1%E4%B8%A6%E8%82%A9%E9%A6%B3%E9%A8%81%E7%9A%84%E6%88%91%E5%80%91.html",
+      "evergreen": false
     },
     {
       "id": "da3797a8274f",
@@ -1236,7 +1362,8 @@
       "start_date": "2026-06-13",
       "end_date": "2027-06-06",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86782.-%E6%BB%99%E6%98%A0%E5%B1%B1%E9%A0%82-%E5%85%89%E5%BD%B1%E5%8C%AF%E6%BC%94.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86782.-%E6%BB%99%E6%98%A0%E5%B1%B1%E9%A0%82-%E5%85%89%E5%BD%B1%E5%8C%AF%E6%BC%94.html",
+      "evergreen": false
     },
     {
       "id": "18bc005e5ff8",
@@ -1259,20 +1386,22 @@
       "start_date": "2026-06-10",
       "end_date": "2026-10-18",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.linkhk.com/tc/promotion/795"
+      "source_url": "https://www.linkhk.com/tc/promotion/795",
+      "evergreen": false
     },
     {
       "id": "52361c5d15d6",
       "title": "幸會25歲––香港電影資料館珍藏展 | 香港流行文化節2026",
       "title_full": "幸會25歲––香港電影資料館珍藏展 | 香港流行文化節2026",
       "location": "新界沙田文林路1號香港文化博物館1樓專題展覽館一至二",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "展覽",
         "室內",
         "安靜",
-        "坐低傾"
+        "坐低傾",
+        "免費"
       ],
       "display_tags": [
         "展覽",
@@ -1282,7 +1411,8 @@
       "start_date": "2026-06-03",
       "end_date": "2027-03-29",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86048.%E5%B9%B8%E6%9C%8325%E6%AD%B2-%E9%A6%99%E6%B8%AF%E9%9B%BB%E5%BD%B1%E8%B3%87%E6%96%99%E9%A4%A8%E7%8F%8D%E8%97%8F%E5%B1%95-%E9%A6%99%E6%B8%AF%E6%B5%81%E8%A1%8C%E6%96%87%E5%8C%96%E7%AF%802026.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86048.%E5%B9%B8%E6%9C%8325%E6%AD%B2-%E9%A6%99%E6%B8%AF%E9%9B%BB%E5%BD%B1%E8%B3%87%E6%96%99%E9%A4%A8%E7%8F%8D%E8%97%8F%E5%B1%95-%E9%A6%99%E6%B8%AF%E6%B5%81%E8%A1%8C%E6%96%87%E5%8C%96%E7%AF%802026.html",
+      "evergreen": false
     },
     {
       "id": "32e6fce014a7",
@@ -1305,7 +1435,8 @@
       "start_date": "2026-06-02",
       "end_date": "2026-12-06",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86500.%E9%9F%B3%E6%A8%82%E7%9B%9B%E6%9C%832026.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86500.%E9%9F%B3%E6%A8%82%E7%9B%9B%E6%9C%832026.html",
+      "evergreen": false
     },
     {
       "id": "833170793b68",
@@ -1327,7 +1458,8 @@
       "start_date": "2026-06-01",
       "end_date": "2026-09-30",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86468.%E4%B8%AD%E8%8F%AF%E6%96%87%E5%8C%96%E7%AF%802026.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86468.%E4%B8%AD%E8%8F%AF%E6%96%87%E5%8C%96%E7%AF%802026.html",
+      "evergreen": false
     },
     {
       "id": "9b2f34d5a663",
@@ -1350,19 +1482,21 @@
       "start_date": "2026-05-01",
       "end_date": "2027-04-30",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.tsimshatsuicentre.com.hk/tc/promotions/hong-kong-spectacular-rewards-phase-4/"
+      "source_url": "https://www.tsimshatsuicentre.com.hk/tc/promotions/hong-kong-spectacular-rewards-phase-4/",
+      "evergreen": false
     },
     {
       "id": "db07c07b0f11",
       "title": "長安萬象——陝西隋唐文明展",
       "title_full": "長安萬象——陝西隋唐文明展",
       "location": "九龍尖沙咀漆咸道南100號香港歷史博物館夢周歷史影像暨文化館及1樓大堂",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "展覽",
         "室內",
-        "安靜"
+        "安靜",
+        "免費"
       ],
       "display_tags": [
         "展覽",
@@ -1372,19 +1506,21 @@
       "start_date": "2026-04-25",
       "end_date": "2026-11-30",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88605.%E9%95%B7%E5%AE%89%E8%90%AC%E8%B1%A1-%E9%99%9D%E8%A5%BF%E9%9A%8B%E5%94%90%E6%96%87%E6%98%8E%E5%B1%95.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88605.%E9%95%B7%E5%AE%89%E8%90%AC%E8%B1%A1-%E9%99%9D%E8%A5%BF%E9%9A%8B%E5%94%90%E6%96%87%E6%98%8E%E5%B1%95.html",
+      "evergreen": false
     },
     {
       "id": "bf70ffbb32b0",
       "title": "琳瑯──紐約大都會藝術博物館世界珠寶珍藏",
       "title_full": "琳瑯──紐約大都會藝術博物館世界珠寶珍藏",
       "location": "香港故宮文化博物館展廳8",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "$150–180",
+      "budget_tag": "$100–300",
       "tags": [
         "展覽",
         "室內",
-        "安靜"
+        "安靜",
+        "$100–300"
       ],
       "display_tags": [
         "展覽",
@@ -1394,19 +1530,21 @@
       "start_date": "2026-04-15",
       "end_date": "2026-10-19",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85802.%E7%90%B3%E7%91%AF-%E7%B4%90%E7%B4%84%E5%A4%A7%E9%83%BD%E6%9C%83%E8%97%9D%E8%A1%93%E5%8D%9A%E7%89%A9%E9%A4%A8%E4%B8%96%E7%95%8C%E7%8F%A0%E5%AF%B6%E7%8F%8D%E8%97%8F-.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85802.%E7%90%B3%E7%91%AF-%E7%B4%90%E7%B4%84%E5%A4%A7%E9%83%BD%E6%9C%83%E8%97%9D%E8%A1%93%E5%8D%9A%E7%89%A9%E9%A4%A8%E4%B8%96%E7%95%8C%E7%8F%A0%E5%AF%B6%E7%8F%8D%E8%97%8F-.html",
+      "evergreen": false
     },
     {
       "id": "667127e6293f",
       "title": "當下——香港藝術展",
       "title_full": "當下——香港藝術展",
       "location": "香港藝術館",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "展覽",
         "室內",
-        "安靜"
+        "安靜",
+        "免費"
       ],
       "display_tags": [
         "展覽",
@@ -1416,7 +1554,8 @@
       "start_date": "2026-03-20",
       "end_date": "2027-05-05",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85986.%E7%95%B6%E4%B8%8B-%E9%A6%99%E6%B8%AF%E8%97%9D%E8%A1%93%E5%B1%95.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85986.%E7%95%B6%E4%B8%8B-%E9%A6%99%E6%B8%AF%E8%97%9D%E8%A1%93%E5%B1%95.html",
+      "evergreen": false
     },
     {
       "id": "b349da4c338b",
@@ -1439,7 +1578,8 @@
       "start_date": "2026-01-02",
       "end_date": "2027-01-02",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85265.%E6%B2%B9%E8%94%B4%E5%9C%B0%E8%AD%A6%E7%BD%B2%E5%85%89%E5%BD%B1%E4%B9%8B%E6%97%85.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id85265.%E6%B2%B9%E8%94%B4%E5%9C%B0%E8%AD%A6%E7%BD%B2%E5%85%89%E5%BD%B1%E4%B9%8B%E6%97%85.html",
+      "evergreen": false
     },
     {
       "id": "488cea7eb78d",
@@ -1465,20 +1605,22 @@
       "start_date": "2025-12-12",
       "end_date": "2026-11-29",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86002.%E7%B6%AD%E5%9C%92%E5%B8%82%E9%9B%86.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id86002.%E7%B6%AD%E5%9C%92%E5%B8%82%E9%9B%86.html",
+      "evergreen": false
     },
     {
       "id": "c3eb6e5c5daf",
       "title": "相知無遠近:張愛玲與宋淇、宋鄺文美的跨地半生緣",
       "title_full": "相知無遠近:張愛玲與宋淇、宋鄺文美的跨地半生緣",
       "location": "九龍何文田牧愛街30號 香港都會大學何鴻燊圖書館中國現代文學館",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "展覽",
         "戶外",
         "安靜",
-        "行路多"
+        "行路多",
+        "免費"
       ],
       "display_tags": [
         "展覽",
@@ -1488,7 +1630,8 @@
       "start_date": "2025-11-20",
       "end_date": "2027-05-31",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88403.%E7%9B%B8%E7%9F%A5%E7%84%A1%E9%81%A0%E8%BF%91-%E5%BC%B5%E6%84%9B%E7%8E%B2%E8%88%87%E5%AE%8B%E6%B7%87-%E5%AE%8B%E9%84%BA%E6%96%87%E7%BE%8E%E7%9A%84%E8%B7%A8%E5%9C%B0%E5%8D%8A%E7%94%9F%E7%B7%A3.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id88403.%E7%9B%B8%E7%9F%A5%E7%84%A1%E9%81%A0%E8%BF%91-%E5%BC%B5%E6%84%9B%E7%8E%B2%E8%88%87%E5%AE%8B%E6%B7%87-%E5%AE%8B%E9%84%BA%E6%96%87%E7%BE%8E%E7%9A%84%E8%B7%A8%E5%9C%B0%E5%8D%8A%E7%94%9F%E7%B7%A3.html",
+      "evergreen": false
     },
     {
       "id": "856ff1de1e6e",
@@ -1510,21 +1653,23 @@
       "start_date": "2025-06-27",
       "end_date": "2027-08-01",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id83441.m-%E5%B8%8C%E5%85%8B%E8%97%8F%E5%93%81-%E5%BF%83%E9%9D%88%E5%9C%96%E6%99%AF.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id83441.m-%E5%B8%8C%E5%85%8B%E8%97%8F%E5%93%81-%E5%BF%83%E9%9D%88%E5%9C%96%E6%99%AF.html",
+      "evergreen": false
     },
     {
       "id": "9953d76459c0",
       "title": "九龍城寨光影之旅",
       "title_full": "「九龍城寨光影之旅」電影場景展",
       "location": "九龍九龍城東正道九龍寨城公園衙門",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "展覽",
         "戶外",
         "安靜",
         "坐低傾",
-        "親子向"
+        "親子向",
+        "免費"
       ],
       "display_tags": [
         "展覽",
@@ -1534,20 +1679,22 @@
       "start_date": "2025-05-24",
       "end_date": "2028-05-23",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id83773.-%E4%B9%9D%E9%BE%8D%E5%9F%8E%E5%AF%A8%E5%85%89%E5%BD%B1%E4%B9%8B%E6%97%85-%E9%9B%BB%E5%BD%B1%E5%A0%B4%E6%99%AF%E5%B1%95.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id83773.-%E4%B9%9D%E9%BE%8D%E5%9F%8E%E5%AF%A8%E5%85%89%E5%BD%B1%E4%B9%8B%E6%97%85-%E9%9B%BB%E5%BD%B1%E5%A0%B4%E6%99%AF%E5%B1%95.html",
+      "evergreen": false
     },
     {
       "id": "b4fb5feaf48e",
       "title": "香港漫畫星光大道第四期展期",
       "title_full": "香港漫畫星光大道第四期展期",
       "location": "尖沙咀九龍公園",
-      "budget": "未知",
-      "budget_tag": null,
+      "budget": "免費",
+      "budget_tag": "免費",
       "tags": [
         "展覽",
         "戶外",
         "安靜",
-        "親子向"
+        "親子向",
+        "免費"
       ],
       "display_tags": [
         "展覽",
@@ -1557,7 +1704,8 @@
       "start_date": "2024-10-21",
       "end_date": "2027-03-15",
       "source": "香港旅遊發展局 DiscoverHK",
-      "source_url": "https://www.discoverhongkong.com/tc/events/event.id82641.%E9%A6%99%E6%B8%AF%E6%BC%AB%E7%95%AB%E6%98%9F%E5%85%89%E5%A4%A7%E9%81%93%E7%AC%AC%E5%9B%9B%E6%9C%9F%E5%B1%95%E6%9C%9F.html"
+      "source_url": "https://www.discoverhongkong.com/tc/events/event.id82641.%E9%A6%99%E6%B8%AF%E6%BC%AB%E7%95%AB%E6%98%9F%E5%85%89%E5%A4%A7%E9%81%93%E7%AC%AC%E5%9B%9B%E6%9C%9F%E5%B1%95%E6%9C%9F.html",
+      "evergreen": false
     },
     {
       "id": "e4938951973e",
@@ -1581,7 +1729,8 @@
       "start_date": null,
       "end_date": null,
       "source": "常設免費場地（手選核對）",
-      "source_url": "https://www.lcsd.gov.hk/tc/hkcc/programmes/audbuilding/freeculturalprogrammes.html"
+      "source_url": "https://www.lcsd.gov.hk/tc/hkcc/programmes/audbuilding/freeculturalprogrammes.html",
+      "evergreen": true
     },
     {
       "id": "d76499670fa5",
@@ -1605,7 +1754,8 @@
       "start_date": null,
       "end_date": null,
       "source": "常設免費場地（手選核對）",
-      "source_url": "https://www.mplus.org.hk/tc/plan-your-visit/"
+      "source_url": "https://www.mplus.org.hk/tc/plan-your-visit/",
+      "evergreen": true
     },
     {
       "id": "3531060962ab",
@@ -1630,7 +1780,8 @@
       "start_date": null,
       "end_date": null,
       "source": "常設免費場地（手選核對）",
-      "source_url": "https://www.pmq.org.hk/?lang=zh"
+      "source_url": "https://www.pmq.org.hk/?lang=zh",
+      "evergreen": true
     },
     {
       "id": "a4ddeb141b51",
@@ -1654,7 +1805,8 @@
       "start_date": null,
       "end_date": null,
       "source": "常設免費場地（手選核對）",
-      "source_url": "https://www.discoverhongkong.com/tc/attractions.html"
+      "source_url": "https://www.discoverhongkong.com/tc/attractions.html",
+      "evergreen": true
     }
   ],
   "sources": [
@@ -1667,16 +1819,17 @@
     },
     {
       "source": "新假期",
-      "url": "https://www.weekendhk.com/%E5%A4%A7%E7%81%A3%E5%8D%80%E5%A5%BD%E5%8E%BB%E8%99%95/",
+      "url": "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/",
       "ok": true,
-      "count": 0,
+      "count": 17,
       "error": null,
       "urls": [
-        "https://www.weekendhk.com/%E5%A4%A7%E7%81%A3%E5%8D%80%E5%A5%BD%E5%8E%BB%E8%99%95/",
-        "https://www.weekendhk.com/%e7%8e%a9%e6%a8%82%e5%84%aa%e6%83%a0/%e5%95%86%e5%a0%b4%e6%b3%8a%e8%bb%8a%e5%84%aa%e6%83%a0-2025-%e6%b8%af%e4%b9%9d%e6%96%b0%e7%95%8c-2986308/",
+        "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/",
         "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e4%b8%ad%e7%a7%8b-%e7%b6%ad%e5%9c%92-%e5%a5%bd%e5%8e%bb%e8%99%95-%e5%a4%a7%e5%9d%91-3511860/",
         "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e5%88%a9%e6%9d%b1%e8%a1%97-%e4%b8%ad%e7%a7%8b-%e7%87%88%e7%b1%a0-%e5%a5%bd%e5%8e%bb%e8%99%95-3510890/",
-        "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95%e6%8e%a8%e4%bb%8b-%e5%a5%bd%e5%8e%bb%e8%99%95-3307066/"
+        "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e7%81%a3%e4%bb%94-%e8%97%8d%e5%b1%8b-%e4%b8%ad%e7%a7%8b%e7%af%80-%e7%87%88%e7%b1%a0-3505647/",
+        "https://www.weekendhk.com/%e9%a6%99%e6%b8%af%e5%a5%bd%e5%8e%bb%e8%99%95/%e5%95%9f%e9%bb%9e-keypoint-%e5%95%9f%e5%be%b7-%e6%96%b0%e5%95%86%e5%a0%b4-2933044/",
+        "https://www.weekendhk.com/%E5%A4%A7%E7%81%A3%E5%8D%80%E5%A5%BD%E5%8E%BB%E8%99%95/"
       ]
     },
     {
@@ -1718,6 +1871,32 @@
       "skipped": true,
       "count": 0,
       "error": "Soft-skip: HKCC monthly calendar / performing-arts e-calendar appear JS-rendered; static HTML lacks parseable event rows. Culture search AJAX also unavailable. https://www.lcsd.gov.hk/tc/hkcc/programmes/currentmonth.html: no structured programme table in static HTML | https://www.performing-arts.gov.hk/tc/e-calendar.html?subscribe_code=HKCC: no structured programme table in static HTML"
+    },
+    {
+      "source": "budget_enrichment",
+      "url": null,
+      "ok": true,
+      "count": 0,
+      "error": null,
+      "candidates": 56,
+      "fetched": 40,
+      "unknown_to_priced": 0,
+      "unknown_to_free": 0,
+      "still_unknown": 13,
+      "errors": 0,
+      "skipped_cap": 16,
+      "samples_priced": [],
+      "samples_free": [],
+      "note": "budget + schedule enrichment (detail pages)",
+      "schedule_filled": 30,
+      "samples_schedule": [
+        "飛奔到月球——38萬公里的旅行 → 2026年10月2日至11月22日 上午10:00至晚上9:00(每天開放)",
+        "2026古蹟周遊樂暨巡迴展覽 → 參觀、導賞團及開篷巴士古蹟遊:11月1日至12月31日; 巡迴展覽及活動:10月",
+        "AI 登月任務・月球開拓週 → 9月26–27日及10月1、3–4日 中午12時至晚上7時",
+        "安妮.伊姆霍夫:天鵝社 → 2026年9月25日至2027年1月3日 星期二至日上午11:00至晚上7:00",
+        "第60屆工展會 → 2026年12月12日至2027年1月4日 2026年12月12日至2027年1",
+        "Amazing Toy Show 2026 → 2026年12月11日至13日 中午12:00至晚上8:00"
+      ]
     }
   ]
 }

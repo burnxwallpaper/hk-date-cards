@@ -28,8 +28,8 @@ CATEGORY_URL = "https://www.weekendhk.com/category/%e9%a6%99%e6%b8%af%e5%a5%bd%e
 # Prefer articles whose titles suggest markets / exhibitions / malls / open days / roundups
 ARTICLE_TITLE_KW = (
     "本週末",
-    "好去處",
     "熱門活動",
+    "好去處",
     "市集",
     "展覽",
     "美術館",
@@ -40,8 +40,17 @@ ARTICLE_TITLE_KW = (
     "嘉年華",
     "花燈",
     "夜",
+    "中秋",
 )
-MAX_ARTICLES = 5
+# Skip promo / parking listicles that match 商場 but are not dating events
+ARTICLE_TITLE_SKIP = (
+    "泊車",
+    "停車",
+    "優惠碼",
+    "信用卡優惠",
+    "消費滿",
+)
+MAX_ARTICLES = 6
 
 
 def _article_urls(session=None) -> list[str]:
@@ -77,6 +86,8 @@ def _article_urls(session=None) -> list[str]:
             text = clean_text(a.get_text(" ", strip=True))
             if not any(k in text for k in ARTICLE_TITLE_KW):
                 continue
+            if any(k in text for k in ARTICLE_TITLE_SKIP):
+                continue
             add(urljoin(CATEGORY_URL, href))
             if len(found) >= MAX_ARTICLES:
                 break
@@ -85,6 +96,16 @@ def _article_urls(session=None) -> list[str]:
 
     if not found:
         found = [DEFAULT_URL]
+
+    def _roundup_score(u: str) -> int:
+        # Prefer the evergreen weekend roundup article over one-off listicles
+        if "3307066" in u or "%e6%9c%ac%e9%80%b1%e6%9c%ab%e6%b4%bb%e5%8b%95" in u or "本週末" in u:
+            return 0
+        if "好去處" in u or "%e5%a5%bd%e5%8e%bb%e8%99%95" in u:
+            return 1
+        return 2
+
+    found.sort(key=_roundup_score)
     return found[:MAX_ARTICLES]
 
 
@@ -229,6 +250,80 @@ def _parse_article(url: str, session=None) -> list[dict[str, Any]]:
             tags_extra=tags_extra,
         )
         events.append(ev)
+
+    # Fallback: some listicles (中秋燈飾等) use paragraphs instead of tables
+    if not events:
+        events.extend(_parse_article_paragraphs(soup, url))
+    return events
+
+
+def _parse_article_paragraphs(soup, url: str) -> list[dict[str, Any]]:
+    """Best-effort: heading + nearby 日期/地點 lines when no event tables exist."""
+    events: list[dict[str, Any]] = []
+    root = soup.select_one("article") or soup.select_one(".entry-content") or soup
+    blocks = root.find_all(["h2", "h3", "h4", "strong"])
+    seen_titles: set[str] = set()
+    for h in blocks:
+        title = strip_detail_suffix(clean_text(h.get_text(" ", strip=True)))
+        if not title or len(title) < 4 or len(title) > 80:
+            continue
+        if title in ("日期", "地點", "詳情", "時間", "收費"):
+            continue
+        if title in seen_titles:
+            continue
+        # Collect following sibling text (a few nodes)
+        chunks: list[str] = []
+        sib = h.find_parent()
+        cursor = h
+        for _ in range(8):
+            cursor = cursor.find_next_sibling() if hasattr(cursor, "find_next_sibling") else None
+            if cursor is None and sib is not None:
+                # walk parent's next bits
+                break
+            if cursor is None:
+                break
+            if getattr(cursor, "name", None) in ("h2", "h3", "h4"):
+                break
+            chunks.append(clean_text(cursor.get_text(" ", strip=True)))
+        # Also check parent container text
+        parent_txt = clean_text(h.parent.get_text(" ", strip=True)) if h.parent else ""
+        joined = " ".join(chunks) or parent_txt
+        if "地點" not in joined and "日期" not in joined:
+            continue
+        date_text = ""
+        location = ""
+        m = re.search(r"日期\s*[:：]?\s*([^地點]{4,80})", joined)
+        if m:
+            date_text = clean_text(m.group(1))
+        m = re.search(r"地點\s*[:：]?\s*([^日時間收費詳情]{2,80})", joined)
+        if m:
+            location = clean_text(m.group(1))
+        if not location:
+            continue
+        if _skip_event(title, joined):
+            continue
+        seen_titles.add(title)
+        budget_blob = f"{title} {joined}"
+        start_date = _parse_start_date(date_text)
+        type_hint = _type_hint_from_title(title, joined) or infer_type(title, location, joined)
+        if type_hint in {"商場漫遊", "室內打卡", "市集", "開放日", "長廳", "夜景散步"} and "免費" not in budget_blob:
+            budget_blob = budget_blob + " 免費入場"
+        tags_extra = [type_hint] if type_hint else None
+        ev = make_event(
+            title=title,
+            location=location,
+            source=SOURCE,
+            source_url=url,
+            date_text=date_text,
+            start_date=start_date,
+            budget_text=budget_blob,
+            extra_text=joined,
+            type_hint=type_hint,
+            tags_extra=tags_extra,
+        )
+        events.append(ev)
+        if len(events) >= 12:
+            break
     return events
 
 

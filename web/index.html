@@ -15,6 +15,11 @@
     <div class="meta" id="meta">載入中…</div>
   </header>
 
+  <nav class="view-tabs" id="view-tabs" role="tablist" aria-label="活動分類">
+    <button type="button" role="tab" data-tab="events" class="is-active" aria-selected="true">活動</button>
+    <button type="button" role="tab" data-tab="evergreen" aria-selected="false">常設免費</button>
+  </nav>
+
   <section class="filters" aria-label="篩選">
     <div class="row">
       <label>類型
@@ -70,7 +75,7 @@
       </label>
       <button type="button" id="btn-reset" class="ghost">重設預設</button>
     </div>
-    <p class="hint">預設：週末 + 預算$100內 + 排除親子向（類型不限）。卡片最多顯示兩個標籤（類型→氣氛→場合）；預算未知唔會亂估。</p>
+    <p class="hint">預設分頁「活動」：預算$100內 + 排除親子向（場合不鎖週末）。「常設免費」只顯示常設博物館／長廳等，切換時唔會套用週末篩選。預算未知唔會亂估。</p>
   </section>
 
   <section class="stats"><span id="count">0</span> 項</section>

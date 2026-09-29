@@ -125,6 +125,7 @@ def fetch_events(session=None) -> tuple[list[dict[str, Any]], dict[str, Any]]:
                 extra_text="博物館 常設展覽 室內 半日 安靜",
                 tags_extra=[m["type"], "室內", "半日", "安靜"],
                 type_hint=m["type"],
+                evergreen=True,
             )
             events.append(ev)
 

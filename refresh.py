@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh HK date-cards event JSON from public sources (best-effort)."""
+"""Refresh HK 活動卡片 event JSON from public sources (best-effort)."""
 from __future__ import annotations
 
 import argparse
@@ -15,7 +15,13 @@ OUT = DATA / "events.json"
 LOG = DATA / "refresh_log.json"
 SAMPLE = DATA / "sample_events.json"
 
-from scrapers.common import dedupe_events, drop_expired_events, now_hkt_iso, postprocess_events
+from scrapers.common import (
+    dedupe_events,
+    drop_expired_events,
+    enrich_budgets_from_source_pages,
+    now_hkt_iso,
+    postprocess_events,
+)
 from scrapers import (
     lcsd_free,
     weekendhk,
@@ -44,7 +50,7 @@ def load_sample() -> list[dict]:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Refresh HK date-cards data")
+    ap = argparse.ArgumentParser(description="Refresh HK 活動卡片 data")
     ap.add_argument("--sample-only", action="store_true", help="Write sample JSON only (no network)")
     ap.add_argument("--out", type=Path, default=OUT)
     args = ap.parse_args()
@@ -71,6 +77,26 @@ def main() -> int:
         if n_expired:
             print(f"  dropped {n_expired} expired event(s) (past end/session date HKT)", flush=True)
         events = postprocess_events(events)
+        print("→ budget enrichment (detail pages for 未知) ...", flush=True)
+        enrich_meta = enrich_budgets_from_source_pages(events, session=session, max_fetches=40)
+        sources_meta.append(
+            {
+                "source": "budget_enrichment",
+                "url": None,
+                "ok": True,
+                "count": enrich_meta.get("unknown_to_priced", 0) + enrich_meta.get("unknown_to_free", 0),
+                "error": None,
+                **enrich_meta,
+            }
+        )
+        print(
+            "  enriched "
+            f"priced={enrich_meta.get('unknown_to_priced', 0)} "
+            f"free={enrich_meta.get('unknown_to_free', 0)} "
+            f"still_unknown={enrich_meta.get('still_unknown', 0)} "
+            f"fetched={enrich_meta.get('fetched', 0)}",
+            flush=True,
+        )
         if not events:
             print("No live events; seeding from sample_events.json", flush=True)
             events = load_sample()

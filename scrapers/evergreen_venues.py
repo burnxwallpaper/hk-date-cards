@@ -87,6 +87,7 @@ def fetch_events(session=None) -> tuple[list[dict[str, Any]], dict[str, Any]]:
                     extra_text=seed.get("extra", ""),
                     tags_extra=seed.get("tags"),
                     type_hint=seed.get("type"),
+                    evergreen=True,
                 )
                 events.append(ev)
             except Exception as e:
