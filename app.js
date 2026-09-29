@@ -81,9 +81,9 @@
   }
 
   function render(list) {
-    els.count.textContent = String(list.length);
+    els.count.textContent = `${list.length}／${all.length}`;
     if (!list.length) {
-      els.grid.innerHTML = '<div class="empty">冇符合條件嘅活動。試下放寬預算或場合。</div>';
+      els.grid.innerHTML = '<div class="empty">冇符合條件嘅活動。試將場合改「全部」或放寬預算。</div>';
       return;
     }
     els.grid.innerHTML = list
@@ -113,7 +113,7 @@
 
   function setDefaults() {
     els.type.value = "";
-    els.occasion.value = "週末";
+    els.occasion.value = "";
     els.mood.value = "";
     els.budget.value = "$100內";
     els.excludeFamily.checked = true;
