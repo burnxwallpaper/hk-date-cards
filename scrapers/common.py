@@ -790,6 +790,21 @@ def _parse_dates_from_text(date_text: str) -> list:
         elif m.group(7):  # same-month end: 9月5至27日
             add(y1, m1, int(m.group(7)))
 
+    # Bare multi-day: 9月19-20、25-26日 / 9月19至20、25至26日
+    years = [d.year for d in out]
+    default_year = years[0] if years else datetime.now(HKT).year
+    for m in re.finditer(
+        r"(?<!\d)(\d{1,2})\s*月\s*(\d{1,2})\s*[\-–—~～至到]\s*(\d{1,2})"
+        r"(?:\s*、\s*(\d{1,2})\s*[\-–—~～至到]\s*(\d{1,2}))?\s*日",
+        t,
+    ):
+        mo = int(m.group(1))
+        add(default_year, mo, int(m.group(2)))
+        add(default_year, mo, int(m.group(3)))
+        if m.group(4) and m.group(5):
+            add(default_year, mo, int(m.group(4)))
+            add(default_year, mo, int(m.group(5)))
+
     # Bare 9月6日 / 9月13日 (inherit year from any ISO/year already found, else current HKT year)
     years = [d.year for d in out]
     default_year = years[0] if years else datetime.now(HKT).year
@@ -824,6 +839,12 @@ def _is_evergreen_or_open_recurring(ev: dict[str, Any]) -> bool:
         dates = _parse_dates_from_text(dt)
         if not dates:
             return True
+    # Open-ended start with no end bound: "2026年6月13日起" / "即日起每晚"
+    # (still honour an explicit 至/到 range end elsewhere in the string)
+    if re.search(r"(?:即日)?起(?:\s|$|，|,|。|每晚|每日|每逢|逢)", dt) and not re.search(
+        r"[至到\-–—~～]", dt
+    ):
+        return True
     return False
 
 
@@ -838,8 +859,14 @@ def event_last_date(ev: dict[str, Any]):
         ed = _parse_iso_date(ev.get("end_date"))
         if ed is not None:
             return ed
+        dt = clean_text(ev.get("date_text") or "")
+        # Open-ended "X日起" — start date alone is NOT an expiry bound
+        if re.search(r"(?:即日)?起(?:\s|$|，|,|。|每晚|每日|每逢|逢)", dt) and not re.search(
+            r"[至到\-–—~～]", dt
+        ):
+            return None
         # If date_text has a bounded range, use its last date even for 逢…
-        parsed = _parse_dates_from_text(ev.get("date_text") or "")
+        parsed = _parse_dates_from_text(dt)
         if parsed:
             return max(parsed)
         return None
@@ -953,6 +980,10 @@ def date_text_is_weak(date_text: str | None) -> bool:
         return True
     # Already has clock / session wording → keep
     if _TIME_OF_DAY_RE.search(s):
+        return False
+    # Chinese calendar range / open-ended start already explicit → keep
+    # (do NOT re-scrape roundup articles; first 日期: on page is often another event)
+    if re.search(r"即日|(?:\d{4}\s*年\s*)?\d{1,2}\s*月\s*\d{1,2}\s*日", s):
         return False
     # Pure ISO / ISO range only → weak (enrichable)
     if re.fullmatch(r"\d{4}-\d{2}-\d{2}(?:\s*至\s*\d{4}-\d{2}-\d{2})?", s):
